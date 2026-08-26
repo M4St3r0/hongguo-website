@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Fix "Windows Protected Your PC" When Installing Hongguo Downloader — Hongguo Downloader</title>
+<meta name="description" content="Seeing Windows SmartScreen block the Hongguo Downloader installer? Here's exactly why it happens, how to safely click through it, and what to do if 'Run anyway' doesn't show up.">
+<meta name="keywords" content="Windows protected your PC Hongguo Downloader, SmartScreen warning, how to install Hongguo Downloader, Windows Defender SmartScreen, run anyway Windows">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="M4St3r0">
+<link rel="canonical" href="https://hongguodownloader.com/blog/fix-windows-protected-your-pc-hongguo-downloader/">
+<meta name="theme-color" content="#140f0b">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Hongguo Downloader">
+<meta property="og:title" content="How to fix &quot;Windows protected your PC&quot; when installing Hongguo Downloader">
+<meta property="og:description" content="Why SmartScreen blocks the installer, how to safely run it anyway, and what to do if the usual fix doesn't show up.">
+<meta property="og:url" content="https://hongguodownloader.com/blog/fix-windows-protected-your-pc-hongguo-downloader/">
+<meta property="og:image" content="https://hongguodownloader.com/img/app-hero.jpg">
+<meta property="article:published_time" content="2026-08-26">
+<meta property="article:modified_time" content="2026-08-26">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fix &quot;Windows protected your PC&quot; for Hongguo Downloader">
+<meta name="twitter:description" content="Why SmartScreen blocks the installer and how to safely run it anyway.">
+<meta name="twitter:image" content="https://hongguodownloader.com/img/app-hero.jpg">
+<link rel="icon" type="image/png" href="/img/logo.png">
+<link rel="stylesheet" href="/blog/blog.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to fix \"Windows protected your PC\" when installing Hongguo Downloader",
+  "description": "A step-by-step fix for the Windows SmartScreen warning that appears when installing Hongguo Downloader, plus what to do if \"Run anyway\" isn't showing up.",
+  "image": "https://hongguodownloader.com/img/app-hero.jpg",
+  "datePublished": "2026-08-26",
+  "dateModified": "2026-08-26",
+  "author": { "@type": "Person", "name": "M4St3r0", "url": "https://t.me/M4st3r0" },
+  "publisher": { "@type": "Organization", "name": "Hongguo Downloader", "logo": { "@type": "ImageObject", "url": "https://hongguodownloader.com/img/logo.png" } },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://hongguodownloader.com/blog/fix-windows-protected-your-pc-hongguo-downloader/" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hongguodownloader.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Guides", "item": "https://hongguodownloader.com/blog/" },
+    { "@type": "ListItem", "position": 3, "name": "Fix \"Windows protected your PC\"" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Why does Windows say \"Windows protected your PC\" for Hongguo Downloader?", "acceptedAnswer": { "@type": "Answer", "text": "It's a Windows SmartScreen reputation warning. SmartScreen flags installers from publishers it hasn't seen run on enough machines yet — it isn't a virus detection, just an unfamiliarity flag." } },
+    { "@type": "Question", "name": "Is it safe to click \"Run anyway\"?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, as long as you downloaded the installer from the official hongguodownloader.com site or its linked GitHub release. Clicking Run anyway on a file from an unknown source is where the real risk lives — the warning itself doesn't mean the file is unsafe." } },
+    { "@type": "Question", "name": "What if I don't see a \"Run anyway\" option?", "acceptedAnswer": { "@type": "Answer", "text": "Click \"More info\" first — the Run anyway button only appears after that. If it's still missing, your organization's Group Policy may be blocking SmartScreen bypasses entirely, which an IT admin would need to adjust." } },
+    { "@type": "Question", "name": "My browser deleted the installer or blocked the download entirely — what now?", "acceptedAnswer": { "@type": "Answer", "text": "Some browsers quarantine or delete installers from newer publishers automatically. Re-download from the official site, then check your browser's download history or Windows Security's Protection history to restore or allow the file before running it again." } }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap"><div class="row">
+    <a class="brand" href="/">
+      <img class="mark" src="/img/logo.webp" alt="" width="34" height="34">
+      <span class="nm"><span class="cn">红果</span> Hongguo Downloader</span>
+    </a>
+    <div class="spacer"></div>
+    <nav class="links">
+      <a href="/#features">Features</a>
+      <a href="/#compare">Compare</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/blog/">Guides</a>
+    </nav>
+    <a class="btn" href="https://github.com/M4St3r0/hongguo-downloader/releases/latest/download/HongguoDownloader-Setup.exe">Download</a>
+  </div></div>
+</header>
+
+<nav class="crumbs" aria-label="Breadcrumb">
+  <a href="/">Home</a><span class="sep">/</span><a href="/blog/">Guides</a><span class="sep">/</span>Fix "Windows protected your PC"
+</nav>
+
+<article>
+  <div class="reading">
+    <span class="eyebrow">How-to</span>
+    <h1>How to fix <span class="grad-text">"Windows protected your PC"</span> when installing Hongguo Downloader</h1>
+    <div class="byline"><span>By <b>M4St3r0</b></span><span>·</span><span>Updated <b>26 August 2026</b></span><span>·</span><span>~6 min read</span></div>
+
+    <div class="tldr">
+      <div class="k">Short answer</div>
+      <p>That blue screen is a <strong>Windows SmartScreen reputation warning</strong>, not a virus detection. It shows up for installers from newer or independent publishers that SmartScreen hasn't seen run on enough machines yet. If you downloaded from the <a href="/">official site</a> or its linked GitHub release, click <strong>"More info" → "Run anyway"</strong> and you're fine. Below is exactly where to click, plus what to do if that option isn't showing up at all.</p>
+    </div>
+
+    <p class="lede">This warning trips up a lot of people the first time they install Hongguo Downloader, and it's a fair thing to pause on — a big blue "Windows protected your PC" banner looks alarming. Here's what it actually means and how to get past it safely.</p>
+
+    <h2 id="why">Why this warning shows up</h2>
+    <p>Windows SmartScreen checks two things before it lets an installer run without a prompt: whether the file's digital signature belongs to a publisher with an established reputation, and how many times that specific file has already been downloaded and run across Windows machines. New and independent software — including small, actively-developed tools like Hongguo Downloader — hasn't built up that download history yet, so SmartScreen defaults to caution and shows the warning. This is a <strong>popularity/reputation check</strong>, not a scan result. It's the same message you'd see on the installer for any small, independently-published Windows app in its early months.</p>
+
+    <h2 id="steps">How to get past it (safely)</h2>
+    <ol>
+      <li><b>Confirm the source first.</b> Make sure you downloaded <code>HongguoDownloader-Setup.exe</code> from <a href="/">hongguodownloader.com</a> or its linked <a href="https://github.com/M4St3r0/hongguo-downloader/releases/latest">GitHub release</a> — never a mirror site, forum link, or file-sharing service. This is the one step that actually matters for safety.</li>
+      <li><b>Run the installer.</b> When "Windows protected your PC" appears, don't close the window — the screen isn't finished.</li>
+      <li><b>Click "More info".</b> It's a small link in the body of the warning, easy to miss under the bold heading.</li>
+      <li><b>Click "Run anyway".</b> This button only appears after step 3 — it's Microsoft's deliberate extra click to make sure you're choosing this on purpose.</li>
+      <li><b>Continue the install as normal.</b> From here it's the regular per-user setup — no admin rights required, no extra prompts.</li>
+    </ol>
+
+    <h2 id="notshowing">If "Run anyway" isn't showing up</h2>
+    <p>A few things can hide that option entirely:</p>
+    <ul>
+      <li><b>Managed or work devices.</b> Some organizations use Group Policy to disable the SmartScreen bypass completely, so <em>no one</em> sees "Run anyway" for unrecognized apps, no matter what they click. On a company laptop, that's a decision for whoever manages the device, not something you can override from the warning screen.</li>
+      <li><b>The browser already removed the file.</b> Chrome and Edge sometimes flag installers from newer publishers as suspicious during the download itself and delete them before Windows ever gets a chance to show SmartScreen. Check your browser's download bar or history — if it says "blocked" or "deleted," you'll need to re-download and explicitly choose "Keep" or "Keep anyway" when prompted.</li>
+      <li><b>Windows Security quarantined it.</b> Open <b>Windows Security → Virus &amp; threat protection → Protection history</b>. If the installer is listed as quarantined or removed, you can restore it from there — but only do this for a file you downloaded directly from the official source.</li>
+    </ul>
+
+    <h2 id="signing">Why reputation, not a signature check, is the trigger</h2>
+    <p>It helps to know what SmartScreen is actually measuring, because it clears up a common misunderstanding: people assume the warning means the file failed some kind of security scan, and it doesn't. SmartScreen's Application Reputation feature tracks two independent signals for every executable it sees — the publisher identity behind the file's digital signature, and a running count of how many separate Windows machines have downloaded and successfully run that exact file. A brand-new build of an installer resets that second counter to zero even if the same publisher has shipped dozens of earlier versions, because SmartScreen ties reputation to the specific file hash, not just the developer. That's why you can see this warning again after updating Hongguo Downloader to a new version, even though you clicked through it cleanly on the last one — a new build is, to SmartScreen, a new unknown file until enough other people have run it too.</p>
+
+    <h2 id="afterfirstrun">What happens after your first successful run</h2>
+    <p>Nothing changes on your machine specifically — Windows doesn't "whitelist" a file for you personally after you click Run anyway once. What actually reduces how often you'll see the warning is the file's reputation climbing across <em>all</em> Windows machines as more people download and run that same build, which is a gradual, aggregate process outside any single user's control. In practice that means: expect the warning on a fresh install, expect it to reappear the next time there's a new version, and don't read either occurrence as a sign something's wrong — it's just how SmartScreen treats software from smaller, independent publishers by design.</p>
+
+    <h2 id="stillunsure">Still not sure it's safe?</h2>
+    <p>That's a reasonable thing to double-check yourself rather than take on faith. A few options:</p>
+    <ul>
+      <li><b>Scan it yourself.</b> You're welcome to run the downloaded installer through your own antivirus, or a multi-engine scanner, before opening it.</li>
+      <li><b>Check what it actually does.</b> Hongguo Downloader installs per-user with no admin rights, runs entirely locally, and never asks for your 红果 account or password — see the full breakdown in <a href="/blog/is-hongguo-downloader-safe/">Is Hongguo Downloader safe?</a></li>
+      <li><b>Get it from the source, every time.</b> Reputation warnings fade as more people download and run the same signed build over time — the fix on Microsoft's side isn't something a single user can speed up, but sticking to the official installer is what keeps you safe in the meantime.</li>
+    </ul>
+
+    <div class="note"><b>In short:</b> "Windows protected your PC" means SmartScreen doesn't yet recognize this installer's download history — it's a caution flag, not a detection. Get the file from the official site, click through More info → Run anyway, and you're set.</div>
+
+    <h2 id="faq">Frequently asked questions</h2>
+    <div class="faq">
+      <details open><summary>Why does Windows say "Windows protected your PC" for Hongguo Downloader?</summary><p class="a">It's a SmartScreen reputation warning for installers from publishers it hasn't seen run on enough machines yet — not a virus detection.</p></details>
+      <details><summary>Is it safe to click "Run anyway"?</summary><p class="a">Yes, as long as you downloaded the installer from the official hongguodownloader.com site or its linked GitHub release.</p></details>
+      <details><summary>What if I don't see a "Run anyway" option?</summary><p class="a">Click "More info" first — Run anyway only appears after that. If it's still missing, a managed device's Group Policy may be blocking the bypass entirely.</p></details>
+      <details><summary>My browser deleted the installer or blocked the download entirely — what now?</summary><p class="a">Re-download from the official site, then check your browser's download history or Windows Security's Protection history to allow the file before running it.</p></details>
+    </div>
+
+    <div class="cta-box">
+      <h3>Ready to install?</h3>
+      <p>Grab the official installer and keep your favourite 红果 dramas offline in 1080p.</p>
+      <div class="row">
+        <a class="btn lg" href="https://github.com/M4St3r0/hongguo-downloader/releases/latest/download/HongguoDownloader-Setup.exe">⬇ Download for Windows</a>
+        <a class="btn ghost lg" href="/blog/is-hongguo-downloader-safe/">Is it safe? Read more</a>
+      </div>
+      <div class="fine">Free to use · Windows 10 / 11 · ~88 MB · no admin rights, no account</div>
+    </div>
+  </div>
+</article>
+
+<footer class="foot">
+  <div class="wrap"><div class="row">
+    <a class="brand" href="/">
+      <img class="mark" src="/img/logo.webp" alt="" width="34" height="34">
+      <span class="nm"><span class="cn">红果</span> Hongguo Downloader</span>
+    </a>
+    <div class="links">
+      <a href="/">Home</a>
+      <a href="/blog/">Guides</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="https://t.me/HongguoDownloaderBot">Get a key</a>
+    </div>
+    <div class="fine">
+      Made &amp; maintained by <a href="https://t.me/M4st3r0" rel="author">M4St3r0</a> · source &amp; releases on <a href="https://github.com/M4St3r0/hongguo-downloader">GitHub</a> · support on <a href="https://t.me/HongguoDownloaderBot">Telegram</a><br>
+      Independent project — not affiliated with 红果 / Hongguo. For personal use. Windows 10 &amp; 11. · Last updated 26 August 2026.
+    </div>
+  </div></div>
+</footer>
+
+</body>
+</html>
