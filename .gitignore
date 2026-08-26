@@ -1,0 +1,7 @@
+.wrangler/
+STAGE/
+node_modules/
+*.backup-*.html
+index.prev-*.html
+marketing/
+LOGO.webp

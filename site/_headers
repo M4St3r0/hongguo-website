@@ -1,0 +1,14 @@
+# Cloudflare Pages security headers (applied to every response, incl. the custom domain).
+# These MIRROR what production already serves (captured from hongguodownloader.pages.dev
+# 2026-08-21). The prior version of this file was stricter (no fonts.gstatic / YouTube) and
+# would have BROKEN the site if deployed -- keep this in sync with production instead.
+#
+# NOTE: deploying still needs the repo reconciled with production first (the repo is missing
+# /M4St3r0/ and other live files), or a `wrangler pages deploy` would revert those.
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' https: data:; connect-src 'self' https://api.hongguodownloader.com https://pqhzswyvfqfrmzktkeab.supabase.co https://cloudflareinsights.com; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com; frame-ancestors 'none'

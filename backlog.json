@@ -1,0 +1,48 @@
+{
+  "updated": "2026-08-26",
+  "comparisons": {
+    "done": ["DramaBox", "YOUKU", "ReelShort"],
+    "remaining": ["GoodShort", "NetShort", "ShortMax", "FlexTV", "MoboReels"]
+  },
+  "genre_roundups": {
+    "done": [],
+    "remaining": ["霸总/CEO romance", "穿越/time-travel", "重生/rebirth revenge", "甜宠/sweet romance", "悬疑/suspense", "古装/costume"]
+  },
+  "how_to": {
+    "done": [],
+    "remaining": [
+      "Fixing \"Windows protected your PC\" when installing Hongguo Downloader",
+      "Updating Hongguo Downloader without losing your library",
+      "Moving your downloaded dramas to a new PC, phone, or drive",
+      "The 2-free-series-a-day limit, explained",
+      "Display size settings for 4K / high-DPI screens",
+      "What an empty search result means, and what to try next"
+    ]
+  },
+  "trust_faq": {
+    "done": [],
+    "remaining": [
+      "Is 红果 (Hongguo) available outside China? What \"oversea\" means",
+      "红果 vs 番茄小说 (fqnovel): what's the actual difference?",
+      "What happens to your downloads if a drama gets pulled from the app"
+    ]
+  },
+  "creator": {
+    "done": [],
+    "remaining": [
+      "A CapCut workflow for AI short-drama recap clips (copyright-safe clip lengths)",
+      "Building a drama-recap channel: format, cadence, where the clips come from"
+    ]
+  },
+  "industry": {
+    "done": [],
+    "remaining": [
+      "The short-drama boom in 2026, in numbers — and why offline viewing is catching up"
+    ]
+  },
+  "spotlights": {
+    "source": "catalog/explorer.json.gz",
+    "used_oversea_ids": ["7528231557526457369"],
+    "selection_rule": "Parse catalog/explorer.json.gz (gzip'd JSON, {items:[{oversea_id,title,episode_cnt,score,remarks,avail}]}). Keep items where avail is truthy. Sort by episode_cnt descending. Skip any oversea_id already listed in used_oversea_ids. Take the next N needed for today's batch."
+  }
+}

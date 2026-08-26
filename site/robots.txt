@@ -1,0 +1,148 @@
+# robots.txt — https://hongguodownloader.com/
+# Search engines and AI crawlers are welcome. Only the private admin panel is off-limits.
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+
+# --- AI / LLM crawlers (explicitly welcomed so the tool can be surfaced and cited in AI answers) ---
+User-agent: GPTBot
+Allow: /
+Disallow: /admin/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /admin/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /admin/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /admin/
+
+User-agent: Claude-Web
+Allow: /
+Disallow: /admin/
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /admin/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin/
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /admin/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /admin/
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /admin/
+
+User-agent: Amazonbot
+Allow: /
+Disallow: /admin/
+
+User-agent: meta-externalagent
+Allow: /
+Disallow: /admin/
+
+User-agent: CCBot
+Allow: /
+Disallow: /admin/
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /admin/
+
+User-agent: Claude-User
+Allow: /
+Disallow: /admin/
+
+# Bytespider feeds ByteDance's Doubao (豆包) AI — highly relevant to the Chinese / 红果 audience
+User-agent: Bytespider
+Allow: /
+Disallow: /admin/
+
+User-agent: DuckAssistBot
+Allow: /
+Disallow: /admin/
+
+User-agent: YouBot
+Allow: /
+Disallow: /admin/
+
+User-agent: cohere-ai
+Allow: /
+Disallow: /admin/
+
+User-agent: cohere-training-data-crawler
+Allow: /
+Disallow: /admin/
+
+User-agent: Diffbot
+Allow: /
+Disallow: /admin/
+
+User-agent: PetalBot
+Allow: /
+Disallow: /admin/
+
+User-agent: Timpibot
+Allow: /
+Disallow: /admin/
+
+User-agent: omgilibot
+Allow: /
+Disallow: /admin/
+
+# --- Chinese search engines — explicitly welcomed (Baidu 百度, Sogou 搜狗, 360, Shenma 神马/UC) ---
+User-agent: Baiduspider
+Allow: /
+Disallow: /admin/
+
+User-agent: Baiduspider-render
+Allow: /
+Disallow: /admin/
+
+User-agent: Sogou web spider
+Allow: /
+Disallow: /admin/
+
+User-agent: Sogou inst spider
+Allow: /
+Disallow: /admin/
+
+User-agent: 360Spider
+Allow: /
+Disallow: /admin/
+
+User-agent: HaoSouSpider
+Allow: /
+Disallow: /admin/
+
+User-agent: YisouSpider
+Allow: /
+Disallow: /admin/
+
+User-agent: Sosospider
+Allow: /
+Disallow: /admin/
+
+# --- Independent/privacy-focused search engines with their own index ---
+User-agent: Bravebot
+Allow: /
+Disallow: /admin/
+
+User-agent: Bravey
+Allow: /
+Disallow: /admin/
+
+Sitemap: https://hongguodownloader.com/sitemap.xml
