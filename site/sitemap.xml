@@ -44,9 +44,39 @@
   <!-- Guides & Blog -->
   <url>
     <loc>https://hongguodownloader.com/blog/</loc>
-    <lastmod>2026-08-26</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://hongguodownloader.com/blog/is-hongguo-available-outside-china/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://hongguodownloader.com/blog/hongguo-downloader-vs-netshort/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://hongguodownloader.com/blog/eighties-courtyard-time-travel-cold-husband/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hongguodownloader.com/blog/return-to-87-treasured-daughter/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hongguodownloader.com/blog/chef-dads-comeback/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://hongguodownloader.com/blog/fix-windows-protected-your-pc-hongguo-downloader/</loc>

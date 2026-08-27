@@ -1,8 +1,8 @@
 {
-  "updated": "2026-08-26",
+  "updated": "2026-08-27",
   "comparisons": {
-    "done": ["DramaBox", "YOUKU", "ReelShort", "GoodShort"],
-    "remaining": ["NetShort", "ShortMax", "FlexTV", "MoboReels"]
+    "done": ["DramaBox", "YOUKU", "ReelShort", "GoodShort", "NetShort"],
+    "remaining": ["ShortMax", "FlexTV", "MoboReels"]
   },
   "genre_roundups": {
     "done": [],
@@ -19,9 +19,8 @@
     ]
   },
   "trust_faq": {
-    "done": [],
+    "done": ["Is 红果 (Hongguo) available outside China? What \"oversea\" means"],
     "remaining": [
-      "Is 红果 (Hongguo) available outside China? What \"oversea\" means",
       "红果 vs 番茄小说 (fqnovel): what's the actual difference?",
       "What happens to your downloads if a drama gets pulled from the app"
     ]
@@ -41,7 +40,7 @@
   },
   "spotlights": {
     "source": "catalog/explorer.json.gz",
-    "used_oversea_ids": ["7528231557526457369", "7670401445845273624", "7665733500951088153", "7663434332274428952"],
+    "used_oversea_ids": ["7528231557526457369", "7670401445845273624", "7665733500951088153", "7663434332274428952", "7593630870884322329", "7595598135934602264", "7663018402813856793"],
     "selection_rule": "Parse catalog/explorer.json.gz (gzip'd JSON, {items:[{oversea_id,title,episode_cnt,score,remarks,avail}]}). Keep items where avail is truthy. Sort by episode_cnt descending. Skip any oversea_id already listed in used_oversea_ids. Take the next N needed for today's batch."
   }
 }
