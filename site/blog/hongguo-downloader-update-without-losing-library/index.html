@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Update Hongguo Downloader Without Losing Your Library — Hongguo Downloader</title>
+<meta name="description" content="A step-by-step guide to updating Hongguo Downloader safely — how the Update-or-Clean-Install choice works, where your downloaded library actually lives, and what to check if something looks missing after an upgrade.">
+<meta name="keywords" content="update Hongguo Downloader, Hongguo Downloader new version, keep library after update, Hongguo Downloader library missing, Hongguo Downloader clean install">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="M4St3r0">
+<link rel="canonical" href="https://hongguodownloader.com/blog/hongguo-downloader-update-without-losing-library/">
+<meta name="theme-color" content="#140f0b">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Hongguo Downloader">
+<meta property="og:title" content="How to update Hongguo Downloader without losing your library">
+<meta property="og:description" content="How the Update-or-Clean-Install choice works, where your downloaded library actually lives, and what to check if anything looks missing after an upgrade.">
+<meta property="og:url" content="https://hongguodownloader.com/blog/hongguo-downloader-update-without-losing-library/">
+<meta property="og:image" content="https://hongguodownloader.com/img/app-hero.jpg">
+<meta property="article:published_time" content="2026-08-28">
+<meta property="article:modified_time" content="2026-08-28">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Update Hongguo Downloader without losing your library">
+<meta name="twitter:description" content="How the Update-or-Clean-Install choice works and where your downloaded library actually lives.">
+<meta name="twitter:image" content="https://hongguodownloader.com/img/app-hero.jpg">
+<link rel="icon" type="image/png" href="/img/logo.png">
+<link rel="stylesheet" href="/blog/blog.css">
+<script>try{if(localStorage.getItem('hg-site-theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to update Hongguo Downloader without losing your library",
+  "description": "A step-by-step guide to updating Hongguo Downloader safely — how the Update-or-Clean-Install choice works, where your downloaded library actually lives, and what to check if something looks missing after an upgrade.",
+  "image": "https://hongguodownloader.com/img/app-hero.jpg",
+  "datePublished": "2026-08-28",
+  "dateModified": "2026-08-28",
+  "author": { "@type": "Person", "name": "M4St3r0", "url": "https://t.me/M4st3r0" },
+  "publisher": { "@type": "Organization", "name": "Hongguo Downloader", "logo": { "@type": "ImageObject", "url": "https://hongguodownloader.com/img/logo.png" } },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://hongguodownloader.com/blog/hongguo-downloader-update-without-losing-library/" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hongguodownloader.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Guides", "item": "https://hongguodownloader.com/blog/" },
+    { "@type": "ListItem", "position": 3, "name": "Updating without losing your library" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Will updating Hongguo Downloader delete my downloaded dramas?", "acceptedAnswer": { "@type": "Answer", "text": "No. Both the Update and Clean Install paths always keep your license and your entire downloaded library — the choice only affects whether the app's own caches and settings are refreshed in place or reset from scratch." } },
+    { "@type": "Question", "name": "What's the difference between Update and Clean Install?", "acceptedAnswer": { "@type": "Answer", "text": "Update refreshes the app in place and is the fastest option. Clean Install clears stale internal caches for a fresh start. Either way, your license and downloaded library carry over — neither one touches your saved video files." } },
+    { "@type": "Question", "name": "How do I know a new version is available?", "acceptedAnswer": { "@type": "Answer", "text": "Open the Account panel inside Hongguo Downloader and look at the update button — it shows Check Update when you're current, or a one-click New Version Available label when there's an upgrade ready." } },
+    { "@type": "Question", "name": "Why does Windows warn me again after I update?", "acceptedAnswer": { "@type": "Answer", "text": "Each new installer build is a new file to Windows SmartScreen, so the reputation warning can reappear even if you clicked through it cleanly on the previous version. It's expected — see the SmartScreen guide for exactly where to click." } }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap"><div class="row">
+    <a class="brand" href="/">
+      <img class="mark" src="/img/logo.webp" alt="" width="34" height="34">
+      <span class="nm"><span class="cn">红果</span> Hongguo Downloader</span>
+    </a>
+    <div class="spacer"></div>
+    <nav class="links">
+      <a href="/#features">Features</a>
+      <a href="/#compare">Compare</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/blog/">Guides</a>
+    </nav>
+    <button class="themetoggle" id="themeBtn" type="button" title="Switch theme" aria-label="Switch light or dark theme">☾</button>
+    <a class="btn" href="https://github.com/M4St3r0/hongguo-downloader/releases/latest/download/HongguoDownloader-Setup.exe">Download</a>
+  </div></div>
+</header>
+
+<nav class="crumbs" aria-label="Breadcrumb">
+  <a href="/">Home</a><span class="sep">/</span><a href="/blog/">Guides</a><span class="sep">/</span>Update without losing your library
+</nav>
+
+<article>
+  <div class="reading">
+    <span class="eyebrow">How-to</span>
+    <h1>How to update <span class="grad-text">Hongguo Downloader</span> without losing your library</h1>
+    <div class="byline"><span>By <b>M4St3r0</b></span><span>·</span><span>Updated <b>28 August 2026</b></span><span>·</span><span>~6 min read</span></div>
+
+    <div class="tldr">
+      <div class="k">Short answer</div>
+      <p><strong>You won't lose anything.</strong> Whichever way you update — a quick <strong>Update</strong> or a full <strong>Clean Install</strong> — Hongguo Downloader always keeps your <strong>license and your entire downloaded library</strong>. The choice only affects the app's internal caches and settings, never your saved video files. Below is exactly how to update, where your library actually lives on disk, and what to check if anything looks off afterward.</p>
+    </div>
+
+    <p class="lede">Updating any app you rely on for a growing collection of files is a fair thing to be cautious about — nobody wants to reopen a downloader and find a poster wall of missing episodes. Here's the straight version of how updates work in Hongguo Downloader and why your library survives every one of them.</p>
+
+    <h2 id="why-safe">Why your library isn't at risk</h2>
+    <p>Your downloaded episodes are plain <strong>.mp4</strong> files saved to a folder on your own PC — the app doesn't store them inside some special container that an installer could wipe. Updating replaces the application itself (the program that searches, queues, and saves new episodes); it does not touch the folder where your finished downloads already sit. That separation is exactly why the app's own installer can offer a full <strong>Clean Install</strong> option at all — resetting the app's internal state has nothing to do with the video files you've already saved.</p>
+
+    <h2 id="steps">How to update, step by step</h2>
+    <ol>
+      <li><b>Check for an update.</b> Open Hongguo Downloader and go to the <b>Account</b> panel. The update button reads <b>Check Update</b> when you're on the latest version, or switches to a one-click <b>New Version Available</b> label when an upgrade is ready.</li>
+      <li><b>Or grab the installer directly.</b> You can always download the current build straight from the <a href="https://github.com/M4St3r0/hongguo-downloader/releases/latest/download/HongguoDownloader-Setup.exe">official GitHub release</a> — no need to uninstall the old version first.</li>
+      <li><b>Run the installer.</b> You'll be asked to choose <b>Update</b> (refresh in place, fastest) or <b>Clean Install</b> (reset stale caches, start fresh). Pick either — your license and library carry over both ways.</li>
+      <li><b>Let it finish, then reopen the app.</b> Your poster wall, your license, and every previously saved episode should be exactly where you left them.</li>
+    </ol>
+    <p>If you saw a Windows SmartScreen warning during this step, that's normal for a fresh installer build and not a sign anything's wrong — see the <a href="/blog/fix-windows-protected-your-pc-hongguo-downloader/">SmartScreen fix guide</a> for exactly where to click.</p>
+
+    <h2 id="update-vs-clean">Update vs. Clean Install: which should you pick?</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th></th><th>Update</th><th>Clean Install</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Speed</th><td>Fastest — refreshes in place</td><td>Slightly longer — resets internal state</td></tr>
+          <tr><th scope="row">Fixes glitchy behavior</th><td>Usually, if it's a version bug</td><td>Best option if the app feels stuck or cache-related issues persist</td></tr>
+          <tr><th scope="row">Keeps your license</th><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+          <tr><th scope="row">Keeps your downloaded library</th><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>In practice, <b>Update</b> is the right default for most people — it's quick and does exactly what you'd expect. Reach for <b>Clean Install</b> only if you've been having odd behavior (a stuck queue, a search that won't refresh) and want the app's own caches wiped without touching your saved episodes.</p>
+
+    <h2 id="library">Where your library actually lives, and how it stays current</h2>
+    <p>Every episode you've downloaded shows up on the app's <strong>Library</strong> poster wall, whether you updated recently or not. If a series you've already downloaded gets new episodes on 红果 after you saved it, the Library flags it with a <strong>"+N new"</strong> badge — and <b>Update all</b> grabs only the missing episodes rather than re-downloading anything you already have. None of that behavior changes across an update; it's the same library, the same folder, before and after.</p>
+
+    <h2 id="after">What to check if something looks off after updating</h2>
+    <p>This is rare, but if your Library ever looks emptier than expected right after an update:</p>
+    <ul>
+      <li><b>Give the app a moment to rescan.</b> The Library rebuilds its poster wall from the files on disk when it reopens — on a large collection this can take a few seconds.</li>
+      <li><b>Confirm you're logged into the same license.</b> If you have a key, make sure the Account panel shows it as active — your library is tied to your local install, not a cloud account, so this is mostly a sanity check.</li>
+      <li><b>Don't run Clean Install repeatedly as a fix for something unrelated.</b> It resets app state, not your files — if episodes are genuinely missing from disk, that's a files-on-disk issue to check directly in your downloads folder, not something an update caused.</li>
+    </ul>
+
+    <div class="note"><b>Note:</b> Hongguo Downloader is an independent tool, not affiliated with 红果 / Hongguo. Always update through the in-app button or the official GitHub release — never a third-party mirror — to make sure what you're installing is the real thing.</div>
+
+    <h2 id="faq">Frequently asked questions</h2>
+    <div class="faq">
+      <details open><summary>Will updating delete my downloaded dramas?</summary><p class="a">No. Both Update and Clean Install always keep your license and your entire downloaded library — the choice only affects the app's own caches and settings.</p></details>
+      <details><summary>What's the difference between Update and Clean Install?</summary><p class="a">Update refreshes the app in place and is the fastest option. Clean Install clears stale internal caches for a fresh start. Neither one touches your saved video files.</p></details>
+      <details><summary>How do I know a new version is available?</summary><p class="a">Check the Account panel — it shows Check Update when current, or a one-click New Version Available label when there's an upgrade.</p></details>
+      <details><summary>Why does Windows warn me again after I update?</summary><p class="a">Each new installer build is a new file to Windows SmartScreen, so the reputation warning can reappear even on a clean update. See the SmartScreen guide for exactly where to click.</p></details>
+    </div>
+
+    <div class="cta-box">
+      <h3>Stay on the latest version</h3>
+      <p>Grab the current Hongguo Downloader build and update with confidence — your library and license always come with you.</p>
+      <div class="row">
+        <a class="btn lg" href="https://github.com/M4St3r0/hongguo-downloader/releases/latest/download/HongguoDownloader-Setup.exe">⬇ Download for Windows</a>
+        <a class="btn ghost lg" href="/blog/hongguo-downloader-update-features/">See what's new</a>
+      </div>
+      <div class="fine">Free to use · Windows 10 / 11 · ~88 MB · license &amp; library always kept</div>
+    </div>
+  </div>
+</article>
+
+<footer class="foot">
+  <div class="wrap"><div class="row">
+    <a class="brand" href="/">
+      <img class="mark" src="/img/logo.webp" alt="" width="34" height="34">
+      <span class="nm"><span class="cn">红果</span> Hongguo Downloader</span>
+    </a>
+    <div class="links">
+      <a href="/">Home</a>
+      <a href="/blog/">Guides</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="https://t.me/HongguoDownloaderBot">Get a key</a>
+    </div>
+    <div class="fine">
+      Made &amp; maintained by <a href="https://t.me/M4st3r0" rel="author">M4St3r0</a> · source &amp; releases on <a href="https://github.com/M4St3r0/hongguo-downloader">GitHub</a> · support on <a href="https://t.me/HongguoDownloaderBot">Telegram</a><br>
+      Independent project — not affiliated with 红果 / Hongguo. For personal use. Windows 10 &amp; 11. · Last updated 28 August 2026.
+    </div>
+  </div></div>
+</footer>
+
+</body>
+</html>
