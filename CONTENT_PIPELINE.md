@@ -80,6 +80,70 @@ instead, rather than repeating a competitor already covered.
    `https://hongguodownloader.com/blog/<slug>/` before considering the run done (Cloudflare Pages
    deploys usually finish in under a minute).
 
+## App version — why it must always live in this repo, never only on production
+
+Cloudflare Pages deploys **only** from what's committed to this repo's `main` branch. There is no
+other source of truth. That means:
+
+- **Never treat a "live" change as durable unless it's also committed here.** If the current app
+  version, a changelog entry, or any homepage copy is updated on the live site through any channel
+  other than a push to this repo, the *next* deploy — including this daily content run — will
+  silently overwrite it back to whatever `main` still says. That is not this pipeline "reverting"
+  anything on purpose; it is just redeploying stale repo content over a change that was never
+  actually saved to source control. The fix is always the same: make the change here, commit it,
+  push it — once it's in `main` there's nothing left to revert.
+- **The installer link never goes stale on its own.** Every download button points at
+  `.../releases/latest/download/HongguoDownloader-Setup.exe`, which GitHub always resolves to the
+  newest release automatically — no repo change needed for the `.exe` itself.
+- **But the text/screenshots describing "the current version" are hardcoded and do need updating**
+  whenever a new app version ships. That currently means: the `"softwareVersion"` JSON-LD field in
+  `site/index.html`, `site/zh/index.html`, `site/chinese-video-downloader/index.html`,
+  `site/hongguoduanju-downloader/index.html`, and `site/ai-drama-downloader/index.html`; the latest
+  entry in the `#whatsnew` changelog section of `site/index.html` (move the previous "latest" into
+  the `.rel-history` list below it); and any Features-section copy that names a specific version.
+  If you become aware a new version has shipped (release notes are provided to you, or the version
+  referenced in the repo doesn't match the latest GitHub release), update these as part of that
+  day's run rather than leaving them stale — don't wait to be asked.
+- This daily content job does not otherwise touch homepage version text, so under normal operation
+  there is nothing to revert. Drift only happens when a release ships and the repo isn't updated to
+  match — see above.
+
+## Real screenshots &amp; video in blog posts
+
+The repo has genuine screenshots and one demo video of the actual running app — use them in posts
+that are actually *about* the tool (how-to guides, comparisons, feature/update recaps, trust/FAQ,
+walkthroughs). Drama-spotlight posts stay text-plus-`app-hero.jpg`-for-OG as already documented above;
+they're about a specific drama, not the app UI, so don't force a screenshot into them.
+
+- **Available real assets** (do not fabricate a new one — if a post needs to illustrate something
+  with no matching real screenshot, describe it in text instead):
+  - `/img/app-grid-light.jpg` / `-dark.jpg` — search bar + Trending wall
+  - `/img/app-queue-light.jpg` / `-dark.jpg` — download queue with live progress bars
+  - `/img/v31/app-library-light.jpg` / `-dark.jpg` — Library poster wall
+  - `/img/v31/app-account-light.jpg` / `-dark.jpg` — Account panel
+  - `/img/v31/app-home-light.jpg` / `-dark.jpg` — home/Trending screen
+  - `/img/v35/app-explore-light.webp` / `-dark.webp` — Explore tab (browse the full catalogue)
+  - `/img/app-dock-dark.jpg` / `-light.jpg` — download dock
+  - `/img/hongguo-demo.mp4` (poster `/img/hongguo-demo-frame.jpg`) — screen-recorded demo of
+    search → queue → batch download in real time
+- **Pick the asset that matches the section it sits in** — a download/queue section gets
+  `app-queue`, a library/updating section gets `v31/app-library`, a search/browse section gets
+  `app-grid` or `v35/app-explore`, etc. Use the theme-swap pattern already on the homepage: both a
+  `.shot-light`/`.shot-dark` pair, e.g.
+  `<img class="shot-light" src="/img/app-queue-light.jpg" ...><img class="shot-dark" src="/img/app-queue-dark.jpg" ...>`
+  wrapped in a simple `<figure>` — see `site/index.html`'s `.bigshot` figures for the exact markup
+  and matching CSS classes, or keep it simpler in blog posts with simply
+  `<img src="/img/app-queue-light.jpg" alt="..." style="width:100%;border-radius:14px;border:1px solid var(--line)">`
+  if you'd rather not theme-swap inline in an article body.
+  Match the CSS variables already loaded via `/blog/blog.css`.
+- **The demo video** belongs in getting-started / walkthrough-style posts (installing, first
+  download, "how to use") — embed it the same way `site/index.html`'s `#how` section does:
+  `<video controls playsinline preload="metadata" poster="/img/hongguo-demo-frame.jpg"><source src="/img/hongguo-demo.mp4" type="video/mp4"></video>`.
+  Don't force it into every post — one relevant embed per batch is plenty.
+- This applies going forward to newly published posts. Retrofitting already-published posts with
+  images/video is a separate, explicitly-requested task, not something to do automatically as part
+  of a normal daily run.
+
 ## Guardrails
 
 - **Never** claim Hongguo Downloader is affiliated with 红果, or with any competitor app named in a
@@ -90,6 +154,9 @@ instead, rather than repeating a competitor already covered.
   don't drift into language that reads as promoting redistribution or piracy.
 - Do not touch `site/M4St3r0/` (the Access-gated admin panel) or `functions/` — out of scope for
   this job.
+- **Never fabricate a screenshot.** Only use the real, already-supplied assets listed above. If a
+  new feature genuinely has no matching screenshot in the repo, say so in text — don't mock one up
+  and present it as a real capture of the app.
 - If something about the app's features or pricing seems uncertain, check an existing post on the
   same topic rather than guessing — the site already documents the freemium model (2 free
   series/day), Windows 10/11 only, no login, ~88 MB installer, etc.
