@@ -1,17 +1,16 @@
 {
-  "updated": "2026-08-28",
+  "updated": "2026-08-29",
   "comparisons": {
-    "done": ["DramaBox", "YOUKU", "ReelShort", "GoodShort", "NetShort", "ShortMax"],
-    "remaining": ["FlexTV", "MoboReels"]
+    "done": ["DramaBox", "YOUKU", "ReelShort", "GoodShort", "NetShort", "ShortMax", "FlexTV"],
+    "remaining": ["MoboReels"]
   },
   "genre_roundups": {
     "done": [],
     "remaining": ["霸总/CEO romance", "穿越/time-travel", "重生/rebirth revenge", "甜宠/sweet romance", "悬疑/suspense", "古装/costume"]
   },
   "how_to": {
-    "done": ["Fixing \"Windows protected your PC\" when installing Hongguo Downloader", "Updating Hongguo Downloader without losing your library"],
+    "done": ["Fixing \"Windows protected your PC\" when installing Hongguo Downloader", "Updating Hongguo Downloader without losing your library", "Moving your downloaded dramas to a new PC, phone, or drive"],
     "remaining": [
-      "Moving your downloaded dramas to a new PC, phone, or drive",
       "The 2-free-series-a-day limit, explained",
       "Display size settings for 4K / high-DPI screens",
       "What an empty search result means, and what to try next"
@@ -39,7 +38,7 @@
   },
   "spotlights": {
     "source": "catalog/explorer.json.gz",
-    "used_oversea_ids": ["7528231557526457369", "7670401445845273624", "7665733500951088153", "7663434332274428952", "7593630870884322329", "7595598135934602264", "7663018402813856793", "7664137840741075992", "7472339648061131838", "7662693691819052056"],
+    "used_oversea_ids": ["7528231557526457369", "7670401445845273624", "7665733500951088153", "7663434332274428952", "7593630870884322329", "7595598135934602264", "7663018402813856793", "7664137840741075992", "7472339648061131838", "7662693691819052056", "7664256882755767320", "7659018396205321240", "7665322205156215870"],
     "selection_rule": "Parse catalog/explorer.json.gz (gzip'd JSON, {items:[{oversea_id,title,episode_cnt,score,remarks,avail}]}). Keep items where avail is truthy. Sort by episode_cnt descending. Skip any oversea_id already listed in used_oversea_ids. Take the next N needed for today's batch."
   }
 }
