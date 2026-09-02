@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>What's New — Hongguo Downloader</title>
+<meta name="description" content="The Hongguo Downloader changelog — every release, newest first. See what changed in v1.0.0.48 (live 红果 leaderboard, two-tab home) and every version before it. Updates install over your current version; your license and library always carry over.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://hongguodownloader.com/whatsnew">
+<meta name="theme-color" content="#faf7f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#140f0b" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Hongguo Downloader">
+<meta property="og:title" content="What's New — Hongguo Downloader changelog">
+<meta property="og:description" content="Every Hongguo Downloader release, newest first — including v1.0.0.48's live 红果 leaderboard and two-tab home.">
+<meta property="og:url" content="https://hongguodownloader.com/whatsnew">
+<meta property="og:image" content="https://hongguodownloader.com/img/v48/leaderboard.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://hongguodownloader.com/img/v48/leaderboard.jpg">
+<link rel="icon" href="/img/logo.webp" type="image/webp">
+<link rel="stylesheet" href="/assets/base.css">
+<script>try{if(localStorage.getItem('hg-site-theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script>
+<style>
+  .wn-head{ padding:clamp(84px,10vw,124px) 0 0; text-align:center; }
+  .wn-head h1{ font-family:var(--font-display); font-weight:800; letter-spacing:-.025em; line-height:1.04;
+               font-size:clamp(30px,4.4vw,52px); margin:12px 0 0; text-wrap:balance; }
+  .wn-head p{ color:var(--ink-2); font-size:clamp(15px,1.8vw,18px); line-height:1.55; max-width:66ch; margin:16px auto 0; }
+  .wn-wrap{ padding-bottom:96px; }
+  /* the featured (latest) release reuses .show/.bigshot/.pts from base.css */
+  .wn-history h2{ font-family:var(--font-display); font-weight:800; font-size:clamp(22px,2.6vw,30px); letter-spacing:-.02em; text-align:center; margin:0; }
+  .rel-row .rel-v a{ color:var(--accent-2); text-decoration:none; }
+  .rel-row .rel-v a:hover{ text-decoration:underline; }
+</style>
+</head>
+
+<header class="nav" id="nav">
+  <div class="wrap"><div class="row">
+    <a class="brand" href="/" aria-label="Hongguo Downloader">
+      <img class="mark" src="/img/logo.webp" alt="" width="34" height="34">
+      <span class="nm"><span class="cn">红果</span> Hongguo Downloader</span>
+    </a>
+    <div class="spacer"></div>
+    <nav class="links">
+      <a href="/Browse">Browse</a>
+      <a href="/#features">Features</a>
+      <a href="/whatsnew" aria-current="page">What's New</a>
+      <a href="/#how">How it works</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/#faq">FAQ</a>
+      <a href="/blog/">Guides</a>
+    </nav>
+    <button class="themetoggle" id="themeBtn" type="button" title="Switch theme" aria-label="Switch light or dark theme">☾</button>
+    <a class="btn primary" href="https://github.com/M4St3r0/hongguo-downloader/releases/latest/download/HongguoDownloader-Setup.exe">Download</a>
+  </div></div>
+</header>
+
+<main id="top">
+  <div class="wrap wn-wrap">
+    <div class="wn-head">
+      <span class="eyebrow">Changelog</span>
+      <h1>What's new in Hongguo Downloader.</h1>
+      <p>Every update installs right over your current version — your license and downloaded library always carry over. Newest release first.</p>
+    </div>
+
+    <!-- Featured: latest release -->
+    <div class="show" style="margin-top:56px">
+      <div class="copy">
+        <span class="newpill">&#9733; Latest &mdash; v1.0.0.48</span>
+        <h3>A live &#32418;&#26524; leaderboard, and a simpler two-tab home.</h3>
+        <p>The home screen is rebuilt around the <b>live &#32418;&#26524; leaderboard</b> &mdash; the platform&rsquo;s real-time rankings, switchable by <b>All / Live-action / Animated / AI</b> &mdash; sitting alongside a <b>Catalogue</b> of 24,000+ dramas. The old Recommended / Hot / New clutter is gone: one clean board, switched by category, wrapped in a quieter, faster, fully responsive interface that stretches to fit any window.</p>
+      </div>
+      <figure class="bigshot">
+        <img class="shot-light" src="/img/v48/leaderboard.jpg" width="1600" height="1000" loading="lazy" alt="Hongguo Downloader v1.0.0.48 — the live 红果 leaderboard ranking short-dramas by category (All / Live-action / Animated / AI) with a two-tab Leaderboard and Catalogue home (light theme)">
+        <img class="shot-dark" src="/img/v48/leaderboard.jpg" width="1600" height="1000" loading="lazy" alt="Hongguo Downloader v1.0.0.48 — the live 红果 leaderboard ranking short-dramas by category with a two-tab Leaderboard and Catalogue home (dark theme)">
+      </figure>
+      <ul class="pts">
+        <li><b>Live &#32418;&#26524; leaderboard</b> &mdash; the platform&rsquo;s real-time top charts, built in</li>
+        <li>One board, switched by category: <b>All &middot; Live-action &middot; Animated &middot; AI</b></li>
+        <li><b>Simpler two-tab home</b> &mdash; &#127942; Leaderboard &amp; &#127916; Catalogue, no more Recommended / Hot / New clutter</li>
+        <li><b>24,000+ drama Catalogue</b> with genre tabs, search, sort &amp; status filter</li>
+        <li><b>Fully responsive</b> &mdash; the whole app stretches to fit any window</li>
+      </ul>
+      <div class="cta" style="margin-top:36px">
+        <a class="btn primary lg" href="https://github.com/M4St3r0/hongguo-downloader/releases/latest/download/HongguoDownloader-Setup.exe">⬇ Get the latest version</a>
+        <a class="btn ghost lg" href="https://github.com/M4St3r0/hongguo-downloader/releases/tag/1.0.0.48" target="_blank" rel="noopener">Full release notes <span class="ar">→</span></a>
+      </div>
+    </div>
+
+    <!-- Full history -->
+    <div class="wn-history" style="margin-top:80px">
+      <h2>Every release</h2>
+      <div class="rel-history" style="margin-top:26px">
+        <div class="rel-row">
+          <span class="rel-v"><a href="https://github.com/M4St3r0/hongguo-downloader/releases/tag/1.0.0.48" target="_blank" rel="noopener">v1.0.0.48</a></span>
+          <p>Home rebuilt around the live 红果 leaderboard (switchable All / Live-action / Animated / AI) beside a 24,000-drama Catalogue; removed the Recommended / Hot / New clutter; fully responsive, quieter and faster interface.</p>
+        </div>
+        <div class="rel-row">
+          <span class="rel-v"><a href="https://github.com/M4St3r0/hongguo-downloader/releases/tag/1.0.0.42" target="_blank" rel="noopener">v1.0.0.42</a></span>
+          <p>Added a full in-app Catalog of 20,000+ verified dramas (genre tabs, search, sort &amp; status filter), an instant Library with accurate on-disk progress, instant notices for shows taken offline, and faster, more reliable startup &amp; shutdown.</p>
+        </div>
+        <div class="rel-row">
+          <span class="rel-v"><a href="https://github.com/M4St3r0/hongguo-downloader/releases/tag/1.0.0.35" target="_blank" rel="noopener">v1.0.0.35</a></span>
+          <p>A rebuilt Explore tab for paging through the full catalogue, fixed search reliability, and download progress bars that track every episode again.</p>
+        </div>
+        <div class="rel-row">
+          <span class="rel-v"><a href="https://github.com/M4St3r0/hongguo-downloader/releases/tag/1.0.0.31" target="_blank" rel="noopener">v1.0.0.31</a></span>
+          <p>Library rebuilt with a new Update settings bar (quality, speed, how many series at once), live-filling posters, and star ratings on every card; Account panel gained a Display size control (125–200%) and reopening the app now just brings your window back.</p>
+        </div>
+        <div class="rel-row">
+          <span class="rel-v">v1.0.0.23</span>
+          <p>Added an Update-or-Clean-Install choice that always keeps your license and library, a built-in update checker in the Account panel, and paste-any-link support for hongguoduanju.com and novelquickapp.com. <a href="/blog/hongguo-downloader-update-features/">Read the recap &rarr;</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap"><div class="row">
+    <a class="brand" href="/">
+      <img class="mark" src="/img/logo.webp" alt="" width="34" height="34">
+      <span class="nm"><span class="cn">红果</span> Hongguo Downloader</span>
+    </a>
+    <div class="links">
+      <a href="https://github.com/M4St3r0/hongguo-downloader/releases/latest/download/HongguoDownloader-Setup.exe">Download</a>
+      <a href="/Browse">Browse</a>
+      <a href="/whatsnew">What's New</a>
+      <a href="/blog/">Guides</a>
+      <a href="https://www.youtube.com/@hongguodownloader" target="_blank" rel="noopener" style="color:var(--accent-2);">YouTube</a>
+      <a href="https://t.me/HongguoDownloaderBot">Get a key</a>
+    </div>
+    <div class="fine">
+      Independent project — not affiliated with 红果 / Hongguo. For personal use. Windows 10 &amp; 11.
+    </div>
+  </div></div>
+</footer>
+
+<script>
+(function(){ var root=document.documentElement, btn=document.getElementById('themeBtn');
+  function set(t){ if(t==='dark'){root.setAttribute('data-theme','dark');}else{root.removeAttribute('data-theme');} try{localStorage.setItem('hg-site-theme',t);}catch(e){} if(btn)btn.textContent=(t==='dark')?'☀':'☾'; }
+  try{ set(localStorage.getItem('hg-site-theme')==='dark'?'dark':'light'); }catch(e){ set('light'); }
+  if(btn) btn.onclick=function(){ set(root.getAttribute('data-theme')==='dark'?'light':'dark'); };
+})();
+(function(){ var nav=document.getElementById('nav'); if(!nav) return; var on=function(){ nav.classList.toggle('scrolled', window.scrollY>8); }; on(); addEventListener('scroll',on,{passive:true}); })();
+</script>
+</body>
+</html>

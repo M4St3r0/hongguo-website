@@ -121,7 +121,7 @@
     --font-display:"SF Pro Display","Segoe UI Variable Display","Segoe UI Semibold","Segoe UI",system-ui,-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
     --font-ui:"SF Pro Text","Segoe UI",system-ui,-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
     --font-mono:"SF Mono",ui-monospace,"JetBrains Mono","Cascadia Code",Consolas,monospace;
-    --maxw:min(1560px, 93vw);   /* fluid: stretches with the window like the app, capped for very wide screens */
+    --maxw:min(2760px, 96vw);   /* edge-to-edge: fills the window with minimal side margins, capped only for ultra-wide screens */
   }
   :root[data-theme="dark"]{
     /* DARK — the app's "warm dark" theme */
@@ -237,6 +237,20 @@
   .window .frame img{ width:100%; height:auto; }
   .window .halo{ position:absolute; inset:-8% -4% -22% -4%; z-index:-1; border-radius:40px;
                  background:radial-gradient(60% 60% at 50% 25%, var(--glow), transparent 70%); filter:blur(24px); }
+
+  /* edge-to-edge hero: two columns on wide screens — copy left, live app screenshot right */
+  @media (min-width:1080px){
+    .hero{ padding:104px 0 72px; }
+    .hero .wrap{ display:grid; grid-template-columns:minmax(400px, 44%) 1fr; gap:clamp(36px,4.2vw,88px); align-items:center; }
+    .hero .inner{ text-align:left; padding-top:0; }
+    .hero h1{ margin:16px 0 0; max-width:20ch; }
+    .hero p.sub{ margin:20px 0 0; max-width:54ch; }
+    .hero .cta{ justify-content:flex-start; }
+    .hero .cta .fineprint, .hero .cta .livestat{ text-align:left; }
+    .hero .window{ margin:0; max-width:100%; }
+    .hero .tour-tabs{ justify-content:flex-start; }
+    .hero .tour-cap{ text-align:left; }
+  }
 
   /* ============================ spec strip ============================ */
   .specs{ border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--ground-2); }
@@ -371,9 +385,9 @@
   @media (prefers-reduced-motion:reduce){ *{ animation:none !important; transition:none !important; scroll-behavior:auto; } }
 
   /* ==================== v1.0.0.31 redesign: bigger hero + big feature showcases ==================== */
-  .window{ max-width:1200px; margin-top:46px; }
+  .window{ max-width:min(1720px, 84vw); margin-top:46px; }
   .window .frame{ border-radius:22px; }
-  @media (max-width:640px){ .window{ margin-top:30px; } }
+  @media (max-width:640px){ .window{ margin-top:30px; max-width:100%; } }
 
   .showcases{ margin-top:60px; }
   .show{ margin-top:104px; }
@@ -381,7 +395,7 @@
   .show .copy{ max-width:820px; margin:0 auto; text-align:center; }
   .show .copy h3{ font-family:var(--font-display); font-weight:800; font-size:clamp(26px,3.6vw,40px); letter-spacing:-.02em; line-height:1.1; margin:16px 0 0; text-wrap:balance; }
   .show .copy p{ color:var(--ink-2); font-size:17px; margin:16px auto 0; max-width:62ch; }
-  .show .bigshot{ position:relative; margin:44px auto 0; max-width:1200px; border-radius:22px; overflow:hidden;
+  .show .bigshot{ position:relative; margin:44px auto 0; max-width:min(1900px, 88vw); border-radius:22px; overflow:hidden;
                   border:1px solid var(--line-2); box-shadow:var(--shadow); background:var(--surface); }
   .show .bigshot img{ width:100%; height:auto; }
   .show .bigshot::before{ content:""; position:absolute; inset:-10% -4% -20% -4%; z-index:-1;
@@ -398,6 +412,22 @@
             color:var(--accent-2); border:1px solid color-mix(in oklab,var(--accent) 32%,transparent);
             font:800 11px/1 var(--font-mono); letter-spacing:.09em; text-transform:uppercase; padding:8px 13px; border-radius:20px; }
   @media (max-width:860px){ .show .pts{ grid-template-columns:1fr; max-width:520px; } .show{ margin-top:76px; } }
+
+  /* compact 2-column feature rows on wide screens — image one side, copy+points the other, alternating.
+     Halves the vertical length of the showcases and matches the edge-to-edge hero. */
+  @media (min-width:960px){
+    .showcases{ margin-top:52px; }
+    .show{ display:grid; grid-template-columns:minmax(0,1.06fr) minmax(340px,.8fr);
+           grid-template-areas:"shot copy" "shot pts"; column-gap:clamp(40px,4.6vw,84px); row-gap:20px;
+           align-items:center; margin-top:64px; }
+    .show:first-child{ margin-top:0; }
+    .show:nth-of-type(even){ grid-template-columns:minmax(340px,.8fr) minmax(0,1.06fr);
+                             grid-template-areas:"copy shot" "pts shot"; }
+    .show .copy{ grid-area:copy; text-align:left; margin:0; max-width:none; align-self:end; }
+    .show .copy p{ margin:14px 0 0; max-width:52ch; }
+    .show .bigshot{ grid-area:shot; margin:0; max-width:100%; }
+    .show .pts{ grid-area:pts; grid-template-columns:1fr 1fr; max-width:none; margin:4px 0 0; align-self:start; text-align:left; }
+  }
 
   /* ==================== changelog / what's new ==================== */
   .rel-history{ max-width:800px; margin:64px auto 0; border-top:1px solid var(--line); }
@@ -420,8 +450,9 @@
     </a>
     <div class="spacer"></div>
     <nav class="links">
+      <a href="/Browse">Browse</a>
       <a href="#features">Features</a>
-      <a href="#whatsnew">What's New</a>
+      <a href="/whatsnew">What's New</a>
       <a href="#how">How it works</a>
       <a href="#compare">Compare</a>
       <a href="#pricing">Pricing</a>
@@ -504,13 +535,13 @@
   </div></div>
 </div>
 
-<!-- ============================ LIVE BROWSER (Cloudflare Worker-powered) ============================ -->
+<!-- ===== hero product-tour + live-stats styles (the live browser moved to /Browse) ===== -->
 <style>
-  #browse .lb{ margin-top:32px; }
   .lb-tabs{ display:inline-flex; gap:6px; background:var(--surface-2); border:1px solid var(--line); border-radius:999px; padding:5px; }
   .lb-tab{ border:0; background:transparent; color:var(--ink-2); font:700 14px/1 var(--font-ui); padding:9px 18px; border-radius:999px; cursor:pointer; }
   .lb-tab.on{ background:linear-gradient(115deg,var(--accent),var(--accent-2)); color:var(--on-accent); }
   .lb-ctrl{ display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin:18px 0 4px; }
+  .lb-ctrl[hidden]{ display:none; }   /* the [hidden] attr must beat display:flex, else category & genre rows both stay visible on tab switch */
   .lb-chip{ border:1px solid var(--line-2); background:var(--surface); color:var(--ink-2); font:600 13px/1 var(--font-ui); padding:8px 14px; border-radius:999px; cursor:pointer; white-space:nowrap; transition:border-color .12s,color .12s; }
   .lb-chip:hover{ border-color:var(--ring); color:var(--ink); }
   .lb-chip.on{ background:linear-gradient(115deg,var(--accent),var(--accent-2)); border-color:transparent; color:var(--on-accent); }
@@ -535,35 +566,6 @@
   .tour-tab.on{ background:linear-gradient(115deg,var(--accent),var(--accent-2)); border-color:transparent; color:var(--on-accent); }
   .tour-cap{ text-align:center; margin-top:14px; color:var(--ink-2); font:600 13.5px/1.5 var(--font-ui); min-height:1.25em; }
 </style>
-<section class="band" id="browse" style="background:var(--ground-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
-  <div class="wrap">
-    <div class="head center">
-      <span class="eyebrow">Live from 红果 · updated continuously</span>
-      <h2>Browse the whole thing — right here, live.</h2>
-      <p>The same top-ranking leaderboard and 24,000-drama catalogue that power the app, streaming live on this page straight from 红果. Pick a category or genre — then grab it in the downloader.</p>
-    </div>
-    <div class="lb">
-      <div style="display:flex;justify-content:center">
-        <div class="lb-tabs" id="lbTabs">
-          <button class="lb-tab on" data-mode="leaderboard">🏆 Leaderboard</button>
-          <button class="lb-tab" data-mode="catalog">🎬 Catalogue</button>
-        </div>
-      </div>
-      <div class="lb-ctrl" id="lbCats">
-        <button class="lb-chip on" data-cat="all">All</button>
-        <button class="lb-chip" data-cat="human">Live-action</button>
-        <button class="lb-chip" data-cat="comic">Animated</button>
-        <button class="lb-chip" data-cat="ai">AI</button>
-      </div>
-      <div class="lb-ctrl" id="lbGenres" hidden></div>
-      <div class="lb-grid" id="lbGrid"><div class="lb-empty">Loading live catalogue…</div></div>
-      <div class="lb-foot">
-        <span id="lbCount"></span>
-        <a class="btn primary" href="https://github.com/M4St3r0/hongguo-downloader/releases/latest/download/HongguoDownloader-Setup.exe">⬇ Download the app to keep these</a>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ============================ FEATURES (merged: everything + v1.0.0.31) ============================ -->
 <section class="band" id="features">
@@ -588,12 +590,10 @@
           <img class="shot-dark" src="img/v48/leaderboard.jpg" width="1600" height="1000" loading="lazy" alt="Hongguo Downloader v1.0.0.48 &mdash; the live 红果 leaderboard ranking short-dramas by category with rank badges, scores and episode counts (dark theme)">
         </figure>
         <ul class="pts">
-          <li><b>Live &#32418;&#26524; leaderboard</b> &mdash; the platform&rsquo;s real-time top charts</li>
-          <li>Switch the board by category: <b>All &middot; Live-action &middot; Animated &middot; AI</b></li>
-          <li><b>Catalogue tab</b> &mdash; page through <b>24,000+ verified dramas</b></li>
-          <li>Genre tabs, in-app <b>search</b>, sort &amp; status filter</li>
-          <li>Or just paste a <b>&#12298;&#21095;&#21517;&#12299; share link</b> &mdash; it resolves instantly</li>
-          <li>Tap posters to line up as many series as you like</li>
+          <li><b>Live &#32418;&#26524; leaderboard</b> &mdash; real-time top charts</li>
+          <li>Switch by category: <b>All &middot; Live-action &middot; Animated &middot; AI</b></li>
+          <li><b>Catalogue</b> &mdash; page through <b>24,000+ verified dramas</b></li>
+          <li>Or paste a <b>&#12298;&#21095;&#21517;&#12299; share link</b> &mdash; resolves instantly</li>
         </ul>
       </div>
 
@@ -629,12 +629,9 @@
         </figure>
         <ul class="pts">
           <li>A poster-wall <b>Library</b> of everything you own</li>
-          <li><b>&ldquo;+N new&rdquo; badges</b> when more episodes appear</li>
-          <li><b>Update all, rebuilt</b> &mdash; downloads every new &amp; missing episode, and much faster on big libraries</li>
-          <li><b>New &mdash; your own Update settings</b>: quality (up to 1080p), speed, and how many series at once</li>
-          <li><b>New &mdash; live posters</b> that fill in with colour in real time as episodes download</li>
-          <li><b>New &mdash; &#9733; star ratings</b> on every card</li>
-          <li>Sort by new, rating, or recently added &middot; open any folder</li>
+          <li><b>Update all, rebuilt</b> &mdash; grabs every new &amp; missing episode</li>
+          <li><b>Your own Update settings</b>: quality, speed &amp; series at once</li>
+          <li><b>Live posters</b> &amp; <b>&#9733; star ratings</b> on every card</li>
         </ul>
       </div>
 
@@ -650,69 +647,13 @@
           <img class="shot-dark" src="img/v31/app-account-dark.jpg" width="2480" height="2080" loading="lazy" alt="Hongguo Downloader v1.0.0.31 Account panel with version 1.0.0.31 and the new Display size control (dark theme)">
         </figure>
         <ul class="pts">
-          <li><b>One-click installer</b> &mdash; no admin rights needed</li>
-          <li>No emulator, no login, <b>no account exposed</b></li>
-          <li>Runs locally on your PC &mdash; <b>private by design</b></li>
+          <li><b>One-click installer</b> &mdash; no admin rights, no emulator</li>
+          <li>No login, <b>no account exposed</b> &mdash; <b>private by design</b></li>
           <li>Full-quality, playable <b>.mp4</b> files you truly own</li>
-          <li><b>New &mdash; Display size</b>: scale the whole app 125&ndash;200% to fit any screen</li>
-          <li><b>New &mdash; one clean window</b>: reopening the app just brings your window back</li>
-          <li>Updates install right over your current version &mdash; <b>license &amp; library carry over</b></li>
+          <li>Updates keep your <b>license &amp; library</b> &middot; scalable <b>Display size</b></li>
         </ul>
       </div>
 
-    </div>
-  </div>
-</section>
-
-<!-- ============================ WHAT'S NEW / CHANGELOG ============================ -->
-<section class="band" id="whatsnew">
-  <div class="wrap">
-    <div class="head center">
-      <span class="eyebrow">Changelog</span>
-      <h2>What's new in Hongguo Downloader.</h2>
-      <p>Every update installs right over your current version &mdash; your license and downloaded library always carry over. Here's what's changed lately.</p>
-    </div>
-
-    <div class="show" style="margin-top:52px">
-      <div class="copy">
-        <span class="newpill">&#9733; Latest &mdash; v1.0.0.48</span>
-        <h3>A live &#32418;&#26524; leaderboard, and a simpler two-tab home.</h3>
-        <p>The home screen is rebuilt around the <b>live &#32418;&#26524; leaderboard</b> &mdash; the platform&rsquo;s real-time rankings, switchable by <b>All / Live-action / Animated / AI</b> &mdash; sitting alongside a <b>Catalogue</b> of 24,000+ dramas. The old Recommended / Hot / New clutter is gone: one clean board, switched by category, wrapped in a quieter, faster, fully responsive interface that stretches to fit any window.</p>
-      </div>
-      <figure class="bigshot">
-        <img class="shot-light" src="img/v48/leaderboard.jpg" width="1600" height="1000" loading="lazy" alt="Hongguo Downloader v1.0.0.48 &mdash; the live 红果 leaderboard ranking short-dramas by category (All / Live-action / Animated / AI) with a two-tab Leaderboard and Catalogue home (light theme)">
-        <img class="shot-dark" src="img/v48/leaderboard.jpg" width="1600" height="1000" loading="lazy" alt="Hongguo Downloader v1.0.0.48 &mdash; the live 红果 leaderboard ranking short-dramas by category with a two-tab Leaderboard and Catalogue home (dark theme)">
-      </figure>
-      <ul class="pts">
-        <li><b>Live &#32418;&#26524; leaderboard</b> &mdash; the platform&rsquo;s real-time top charts, built in</li>
-        <li>One board, switched by category: <b>All &middot; Live-action &middot; Animated &middot; AI</b></li>
-        <li><b>Simpler two-tab home</b> &mdash; &#127942; Leaderboard &amp; &#127916; Catalogue, no more Recommended / Hot / New clutter</li>
-        <li><b>24,000+ drama Catalogue</b> with genre tabs, search, sort &amp; status filter</li>
-        <li><b>Fully responsive</b> &mdash; the whole app stretches to fit any window</li>
-      </ul>
-      <div class="cta" style="margin-top:36px">
-        <a class="btn primary lg" href="https://github.com/M4St3r0/hongguo-downloader/releases/latest/download/HongguoDownloader-Setup.exe">⬇ Get the latest version</a>
-        <a class="btn ghost lg" href="https://github.com/M4St3r0/hongguo-downloader/releases" target="_blank" rel="noopener">Full release notes <span class="ar">→</span></a>
-      </div>
-    </div>
-
-    <div class="rel-history">
-      <div class="rel-row">
-        <span class="rel-v">v1.0.0.42</span>
-        <p>Added a full in-app Catalog of 20,000+ verified dramas (genre tabs, search, sort &amp; status filter), an instant Library with accurate on-disk progress, instant notices for shows taken offline, and faster, more reliable startup &amp; shutdown.</p>
-      </div>
-      <div class="rel-row">
-        <span class="rel-v">v1.0.0.35</span>
-        <p>A rebuilt Explore tab for paging through the full catalogue, fixed search reliability, and download progress bars that track every episode again.</p>
-      </div>
-      <div class="rel-row">
-        <span class="rel-v">v1.0.0.31</span>
-        <p>Library rebuilt with a new Update settings bar (quality, speed, how many series at once), live-filling posters, and star ratings on every card; Account panel gained a Display size control (125&ndash;200%) and reopening the app now just brings your window back.</p>
-      </div>
-      <div class="rel-row">
-        <span class="rel-v">v1.0.0.23</span>
-        <p>Added an Update-or-Clean-Install choice that always keeps your license and library, a built-in update checker in the Account panel, and paste-any-link support for hongguoduanju.com and novelquickapp.com. <a href="/blog/hongguo-downloader-update-features/">Read the recap &rarr;</a></p>
-      </div>
     </div>
   </div>
 </section>
@@ -956,69 +897,18 @@
   if(btn) btn.onclick = function(){ set(root.getAttribute('data-theme')==='dark' ? 'light' : 'dark'); };
 })();
 </script>
-<!-- live browser + stats (Cloudflare Worker: hongguo-explorer) -->
+<!-- hero live-stats (Cloudflare Worker: hongguo-explorer) -->
 <script>
 (function(){
   var API="https://hongguo-explorer.aly201514.workers.dev";
-  var $=function(s){return document.querySelector(s);};
-  function esc(t){return String(t==null?'':t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
   function fmt(n){ try{ return (n||0).toLocaleString(); }catch(e){ return ''+(n||0); } }
-  var mode="leaderboard", cat="all", genre="", q="", seq=0, genresLoaded=false;
-  function card(x, rank){
-    return '<div class="lb-card"><div class="lb-art">'
-      +(rank?'<span class="lb-rank'+(rank<=3?' top':'')+'">'+rank+'</span>':'')
-      +(x.score?'<span class="lb-score">★ '+esc(x.score)+'</span>':'')
-      +'<img src="'+esc(x.cover||'')+'" loading="lazy" alt="'+esc(x.title)+'" onerror="this.style.visibility=\'hidden\'">'
-      +'<span class="lb-eps">'+(x.episode_cnt||'?')+' eps</span></div>'
-      +'<div class="lb-ttl">'+esc(x.title)+'</div></div>';
-  }
-  function load(){
-    var my=++seq, grid=$('#lbGrid'); if(!grid) return;
-    grid.innerHTML='<div class="lb-empty">Loading…</div>';
-    var url = mode==='leaderboard'
-      ? API+'/leaderboard?board=hot&category='+encodeURIComponent(cat)+'&size=30'
-      : API+'/explorer?size=30&sort=popular'+(genre?'&genre='+encodeURIComponent(genre):'')+(q?'&q='+encodeURIComponent(q):'');
-    fetch(url).then(function(r){return r.json();}).then(function(d){
-      if(my!==seq) return;
-      var items=d.items||[];
-      if(!items.length){ grid.innerHTML='<div class="lb-empty">Nothing here right now.</div>'; $('#lbCount').textContent=''; return; }
-      grid.innerHTML=items.map(function(x,i){ return card(x, mode==='leaderboard'?i+1:0); }).join('');
-      $('#lbCount').textContent = mode==='leaderboard' ? ('Top '+items.length+' on 红果 right now') : (fmt(d.count||items.length)+' dramas'+(genre?(' · '+genre):'')+(q?(' · “'+q+'”'):''));
-    }).catch(function(){ if(my===seq){ grid.innerHTML='<div class="lb-empty">Couldn\'t reach the live feed — try again shortly.</div>'; } });
-  }
-  function ensureGenres(){
-    if(genresLoaded) return; genresLoaded=true;
-    fetch(API+'/genres?limit=18').then(function(r){return r.json();}).then(function(d){
-      var chips='<button class="lb-chip on" data-g="">All</button>'
-        +(d.genres||[]).map(function(g){ return '<button class="lb-chip" data-g="'+esc(g.value||g.genre)+'">'+esc(g.genre)+'</button>'; }).join('')
-        +'<input id="lbSearch" placeholder="Search 24,000+ dramas…" autocomplete="off" spellcheck="false">';
-      var box=$('#lbGenres'); box.innerHTML=chips;
-      box.querySelectorAll('.lb-chip').forEach(function(c){ c.onclick=function(){
-        genre=c.dataset.g||''; q=''; var si=$('#lbSearch'); if(si) si.value='';
-        box.querySelectorAll('.lb-chip').forEach(function(x){x.classList.toggle('on',x===c);}); load();
-      };});
-      var si=$('#lbSearch'), t; if(si){ si.oninput=function(){ clearTimeout(t); t=setTimeout(function(){ q=si.value.trim(); genre=''; box.querySelectorAll('.lb-chip').forEach(function(x){x.classList.remove('on');}); load(); },350); }; }
-    }).catch(function(){ genresLoaded=false; });
-  }
-  document.querySelectorAll('#lbTabs .lb-tab').forEach(function(t){ t.onclick=function(){
-    mode=t.dataset.mode;
-    document.querySelectorAll('#lbTabs .lb-tab').forEach(function(x){x.classList.toggle('on',x===t);});
-    $('#lbCats').hidden = mode!=='leaderboard';
-    $('#lbGenres').hidden = mode!=='catalog';
-    if(mode==='catalog') ensureGenres();
-    load();
-  };});
-  document.querySelectorAll('#lbCats .lb-chip').forEach(function(c){ c.onclick=function(){
-    cat=c.dataset.cat; document.querySelectorAll('#lbCats .lb-chip').forEach(function(x){x.classList.toggle('on',x===c);}); load();
-  };});
-  // live stats line in the hero
+  var el=document.getElementById('livestat'); if(!el) return;
   fetch(API+'/explorer?size=1').then(function(r){return r.json();}).then(function(d){
     fetch(API+'/genres?limit=60').then(function(r){return r.json();}).then(function(g){
       var ai=0,an=0; (g.genres||[]).forEach(function(x){ if(x.value==='AI')ai=x.count; if(x.value==='Animated')an=x.count; });
-      var el=$('#livestat'); if(el){ el.innerHTML='<b>'+fmt(d.count)+'</b> dramas · <b>'+fmt(ai)+'</b> AI · <b>'+fmt(an)+'</b> animated · live from 红果'; }
+      el.innerHTML='<b>'+fmt(d.count)+'</b> dramas · <b>'+fmt(ai)+'</b> AI · <b>'+fmt(an)+'</b> animated · live from 红果';
     }).catch(function(){});
   }).catch(function(){});
-  load();
 })();
 </script>
 </body>
