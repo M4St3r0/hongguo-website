@@ -16,15 +16,15 @@
 <meta property="og:title" content="Hongguo Downloader (Official Website) — Download 红果 &amp; AI Short-Dramas">
 <meta property="og:description" content="Official website of Hongguo Downloader. Free Windows app to download Hongguo short-dramas and AI-generated dramas in 1080p MP4.">
 <meta property="og:url" content="https://hongguodownloader.com/">
-<meta property="og:image" content="https://hongguodownloader.com/img/v31/app-home-light.jpg">
-<meta property="og:image:width" content="2480">
-<meta property="og:image:height" content="2080">
+<meta property="og:image" content="https://hongguodownloader.com/img/v48/leaderboard.jpg">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="1000">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="zh_CN">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Hongguo Downloader (Official Website)">
 <meta name="twitter:description" content="Official website of Hongguo Downloader. Free Windows app to download Hongguo short-dramas and AI-generated dramas in full 1080p.">
-<meta name="twitter:image" content="https://hongguodownloader.com/img/v31/app-home-light.jpg">
+<meta name="twitter:image" content="https://hongguodownloader.com/img/v48/leaderboard.jpg">
 <link rel="icon" type="image/png" href="img/logo.png">
 <script type="application/ld+json">
 {
@@ -36,9 +36,9 @@
   "operatingSystem": "Windows 10, Windows 11",
   "description": "The official Hongguo Downloader desktop application for Windows, enabling batch 1080p MP4 downloading of Chinese short dramas and AI short dramas from Hongguo without emulators or accounts.",
   "downloadUrl": "https://github.com/M4St3r0/hongguo-downloader/releases/latest/download/HongguoDownloader-Setup.exe",
-  "softwareVersion": "1.0.0.42",
+  "softwareVersion": "1.0.0.48",
   "url": "https://hongguodownloader.com/",
-  "image": "https://hongguodownloader.com/img/v42/catalog.jpg",
+  "image": "https://hongguodownloader.com/img/v48/leaderboard.jpg",
   "author": {
     "@type": "Organization",
     "name": "Hongguo Downloader",
@@ -121,7 +121,7 @@
     --font-display:"SF Pro Display","Segoe UI Variable Display","Segoe UI Semibold","Segoe UI",system-ui,-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
     --font-ui:"SF Pro Text","Segoe UI",system-ui,-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
     --font-mono:"SF Mono",ui-monospace,"JetBrains Mono","Cascadia Code",Consolas,monospace;
-    --maxw:1120px;
+    --maxw:min(1560px, 93vw);   /* fluid: stretches with the window like the app, capped for very wide screens */
   }
   :root[data-theme="dark"]{
     /* DARK — the app's "warm dark" theme */
@@ -159,7 +159,10 @@
   ::selection{ background:var(--accent); color:var(--on-accent); }
   :focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:8px; }
 
-  .wrap{ width:100%; max-width:var(--maxw); margin:0 auto; padding:0 24px; }
+  .wrap{ width:100%; max-width:var(--maxw); margin:0 auto; padding:0 clamp(16px,3.5vw,40px); }
+  /* fluid layout stretches the visuals to the window, but keep running text readable */
+  .hero p, .head p, .wn-foot, .rel-row p, .show .copy p{ max-width:74ch; }
+  .head.center p{ margin-left:auto; margin-right:auto; }
   .eyebrow{ font:700 11.5px/1 var(--font-mono); letter-spacing:.26em; text-transform:uppercase; color:var(--accent-2); }
   .grad-text{ background:linear-gradient(105deg,var(--accent) 0%,var(--accent-2) 42%,var(--teal) 100%); -webkit-background-clip:text; background-clip:text; color:transparent; }
 
@@ -445,23 +448,50 @@
     <div class="inner">
       <span class="eyebrow">Official Website · 红果下载器 · Hongguo Downloader for Windows</span>
       <h1><span class="grad-text">Hongguo Downloader</span>: Never lose a short-drama again.</h1>
-      <p class="sub">A desktop downloader for 红果 &amp; hongguoduanju short-dramas — including <strong style="color:var(--ink);font-weight:600">AI 短剧</strong> — saved to your PC in pristine 1080p MP4.</p>
+      <p class="sub">A desktop downloader for 红果 &amp; hongguoduanju short-dramas. Browse a live <strong style="color:var(--ink);font-weight:600">top-ranking leaderboard</strong> and a <strong style="color:var(--ink);font-weight:600">24,000-drama catalogue</strong> — live-action, animated &amp; <strong style="color:var(--ink);font-weight:600">AI 短剧</strong> — saved to your PC in pristine 1080p MP4.</p>
       <div class="cta">
         <a class="btn primary lg" href="https://github.com/M4St3r0/hongguo-downloader/releases/latest/download/HongguoDownloader-Setup.exe">⬇ Download for Windows</a>
         <a class="btn ghost lg" href="#how">See how it works <span class="ar">→</span></a>
         <div class="fineprint"><b>Free to use</b> · Windows 10 / 11 · ~88 MB · 2 free downloads a day</div>
+        <div class="livestat" id="livestat" aria-live="polite"></div>
       </div>
     </div>
 
     <div class="window">
       <div class="halo"></div>
-      <div class="frame">
-        <img class="shot-light" src="img/v31/app-home-light.jpg" width="2480" height="2080" alt="Hongguo Downloader showing trending 红果 short-dramas and AI 短剧 with a download dock (light theme)">
-        <img class="shot-dark" src="img/v31/app-home-dark.jpg" width="2480" height="2080" alt="Hongguo Downloader showing trending 红果 short-dramas and AI 短剧 with a download dock (dark theme)">
+      <div class="tour-tabs" id="tourTabs" role="tablist" aria-label="Product tour">
+        <button class="tour-tab on" type="button" data-shot="leaderboard">🏆 Leaderboard</button>
+        <button class="tour-tab" type="button" data-shot="catalog">🎬 Catalogue</button>
+        <button class="tour-tab" type="button" data-shot="library">📚 Library</button>
       </div>
+      <div class="frame">
+        <img class="shot-light" id="tourImgL" src="img/v48/leaderboard.jpg" width="1600" height="1000" alt="Hongguo Downloader v1.0.0.48 — the live 红果 leaderboard ranking short-dramas by category (All / Live-action / Animated / AI) with a download dock (light theme)">
+        <img class="shot-dark" id="tourImgD" src="img/v48/leaderboard.jpg" width="1600" height="1000" alt="Hongguo Downloader v1.0.0.48 — the live 红果 leaderboard ranking short-dramas by category with a download dock (dark theme)">
+      </div>
+      <div class="tour-cap" id="tourCap">The live 红果 leaderboard — ranked by category, refreshed continuously.</div>
     </div>
   </div>
 </section>
+
+<script>
+/* Interactive hero product tour — swaps the hero screenshot between app screens */
+(function(){
+  var tabs = document.getElementById('tourTabs'); if (!tabs) return;
+  var iL = document.getElementById('tourImgL'), iD = document.getElementById('tourImgD'), cap = document.getElementById('tourCap');
+  var meta = {
+    leaderboard: { src:'img/v48/leaderboard.jpg', cap:'The live 红果 leaderboard — ranked by category, refreshed continuously.', alt:'Hongguo Downloader v1.0.0.48 — the live 红果 leaderboard ranking short-dramas by category (All / Live-action / Animated / AI).' },
+    catalog:     { src:'img/v48/catalog.jpg',     cap:'The Catalogue — 24,000+ verified dramas with genre tabs, search, sort & filter.', alt:'Hongguo Downloader v1.0.0.48 — the Catalogue browsing 24,000+ verified short-dramas with genre tabs, search, sort and status filter.' },
+    library:     { src:'img/v48/library.jpg',     cap:'Your Library — a poster shelf that grabs every new episode on one tap.', alt:'Hongguo Downloader v1.0.0.48 — the Library, a poster shelf of downloaded short-dramas with new-episode badges and one-tap Update all.' }
+  };
+  Object.keys(meta).forEach(function(k){ var im = new Image(); im.src = meta[k].src; });   // preload so switching is instant
+  tabs.addEventListener('click', function(e){
+    var b = e.target.closest('.tour-tab'); if (!b) return;
+    var m = meta[b.dataset.shot]; if (!m) return;
+    Array.prototype.forEach.call(tabs.children, function(c){ c.classList.toggle('on', c === b); });
+    iL.src = m.src; iD.src = m.src; iL.alt = m.alt; iD.alt = m.alt; cap.textContent = m.cap;
+  });
+})();
+</script>
 
 <!-- ============================ SPEC STRIP ============================ -->
 <div class="specs">
@@ -474,6 +504,67 @@
   </div></div>
 </div>
 
+<!-- ============================ LIVE BROWSER (Cloudflare Worker-powered) ============================ -->
+<style>
+  #browse .lb{ margin-top:32px; }
+  .lb-tabs{ display:inline-flex; gap:6px; background:var(--surface-2); border:1px solid var(--line); border-radius:999px; padding:5px; }
+  .lb-tab{ border:0; background:transparent; color:var(--ink-2); font:700 14px/1 var(--font-ui); padding:9px 18px; border-radius:999px; cursor:pointer; }
+  .lb-tab.on{ background:linear-gradient(115deg,var(--accent),var(--accent-2)); color:var(--on-accent); }
+  .lb-ctrl{ display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin:18px 0 4px; }
+  .lb-chip{ border:1px solid var(--line-2); background:var(--surface); color:var(--ink-2); font:600 13px/1 var(--font-ui); padding:8px 14px; border-radius:999px; cursor:pointer; white-space:nowrap; transition:border-color .12s,color .12s; }
+  .lb-chip:hover{ border-color:var(--ring); color:var(--ink); }
+  .lb-chip.on{ background:linear-gradient(115deg,var(--accent),var(--accent-2)); border-color:transparent; color:var(--on-accent); }
+  #lbSearch{ flex:1 1 200px; min-width:150px; height:38px; padding:0 15px; border:1px solid var(--line); border-radius:999px; background:var(--surface); color:var(--ink); font:600 14px/1 var(--font-ui); }
+  .lb-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(clamp(116px,14vw,166px),1fr)); gap:clamp(10px,1.4vw,18px); margin-top:18px; min-height:220px; }
+  .lb-empty{ grid-column:1/-1; text-align:center; color:var(--muted); padding:46px 0; font:600 14px/1 var(--font-ui); }
+  .lb-art{ position:relative; aspect-ratio:3/4; border-radius:14px; overflow:hidden; background:var(--surface-3); box-shadow:var(--shadow-sm); }
+  .lb-art img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .lb-rank{ position:absolute; top:7px; left:7px; z-index:2; min-width:22px; height:22px; padding:0 6px; display:flex; align-items:center; justify-content:center; border-radius:8px; background:rgba(0,0,0,.62); color:#fff; font:800 12px/1 var(--font-mono); }
+  .lb-rank.top{ background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:var(--on-accent); }
+  .lb-score{ position:absolute; top:7px; right:7px; z-index:2; font:700 11px/1 var(--font-mono); color:#fff; background:rgba(0,0,0,.5); backdrop-filter:blur(4px); padding:4px 7px; border-radius:7px; }
+  .lb-eps{ position:absolute; bottom:7px; left:9px; z-index:2; font:600 11px/1 var(--font-mono); color:rgba(255,255,255,.94); text-shadow:0 1px 5px rgba(0,0,0,.7); }
+  .lb-ttl{ margin-top:9px; font:600 13.5px/1.32 var(--font-ui); color:var(--ink); display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  .lb-foot{ display:flex; gap:16px; align-items:center; flex-wrap:wrap; justify-content:space-between; margin-top:26px; }
+  #lbCount{ color:var(--muted); font:600 14px/1 var(--font-ui); }
+  .livestat{ margin-top:14px; color:var(--ink-2); font:600 13.5px/1.6 var(--font-mono); }
+  .livestat b{ color:var(--accent); font-weight:800; }
+  /* Interactive hero product tour */
+  .tour-tabs{ display:flex; justify-content:center; gap:6px; margin:0 0 14px; flex-wrap:wrap; }
+  .tour-tab{ border:1px solid var(--line); background:var(--surface); color:var(--ink-2); font:700 13px/1 var(--font-ui); padding:8px 15px; border-radius:999px; cursor:pointer; transition:border-color .12s,color .12s,background .12s; }
+  .tour-tab:hover{ border-color:var(--ring); color:var(--ink); }
+  .tour-tab.on{ background:linear-gradient(115deg,var(--accent),var(--accent-2)); border-color:transparent; color:var(--on-accent); }
+  .tour-cap{ text-align:center; margin-top:14px; color:var(--ink-2); font:600 13.5px/1.5 var(--font-ui); min-height:1.25em; }
+</style>
+<section class="band" id="browse" style="background:var(--ground-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="head center">
+      <span class="eyebrow">Live from 红果 · updated continuously</span>
+      <h2>Browse the whole thing — right here, live.</h2>
+      <p>The same top-ranking leaderboard and 24,000-drama catalogue that power the app, streaming live on this page straight from 红果. Pick a category or genre — then grab it in the downloader.</p>
+    </div>
+    <div class="lb">
+      <div style="display:flex;justify-content:center">
+        <div class="lb-tabs" id="lbTabs">
+          <button class="lb-tab on" data-mode="leaderboard">🏆 Leaderboard</button>
+          <button class="lb-tab" data-mode="catalog">🎬 Catalogue</button>
+        </div>
+      </div>
+      <div class="lb-ctrl" id="lbCats">
+        <button class="lb-chip on" data-cat="all">All</button>
+        <button class="lb-chip" data-cat="human">Live-action</button>
+        <button class="lb-chip" data-cat="comic">Animated</button>
+        <button class="lb-chip" data-cat="ai">AI</button>
+      </div>
+      <div class="lb-ctrl" id="lbGenres" hidden></div>
+      <div class="lb-grid" id="lbGrid"><div class="lb-empty">Loading live catalogue…</div></div>
+      <div class="lb-foot">
+        <span id="lbCount"></span>
+        <a class="btn primary" href="https://github.com/M4St3r0/hongguo-downloader/releases/latest/download/HongguoDownloader-Setup.exe">⬇ Download the app to keep these</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============================ FEATURES (merged: everything + v1.0.0.31) ============================ -->
 <section class="band" id="features">
   <div class="wrap">
@@ -485,22 +576,23 @@
 
     <div class="showcases">
 
-      <!-- 1) Find & discover (original + v1.0.0.35 Explore tab) -->
+      <!-- 1) Leaderboard + Catalogue (v1.0.0.48 — live 红果 rankings) -->
       <div class="show">
         <div class="copy">
-          <span class="eyebrow">Find &amp; discover</span>
-          <h3>Search the whole catalogue, or just paste a link.</h3>
-          <p>Type a title to search Hongguo&rsquo;s library, or drop in a share link and it resolves instantly. Not sure what to watch? A built-in Trending wall is right there when you open the app, and the <b>Explore</b> tab pages through the entire 3,300+ title catalogue &mdash; no sign-in required.</p>
+          <span class="newpill">&#9733; New in v1.0.0.48</span>
+          <h3>The live &#32418;&#26524; leaderboard, built right in.</h3>
+          <p>Open the app straight onto the <b>real-time &#32418;&#26524; charts</b> &mdash; the exact rankings the platform is pushing right now, refreshed continuously. Switch the whole board by category with one tap: <b>All</b>, <b>Live-action</b>, <b>Animated</b>, or <b>AI</b>. Want to browse everything instead? The <b>Catalogue</b> tab pages through <b>24,000+ verified dramas</b> with genre tabs, in-app search, sort and status filter &mdash; still no sign-in.</p>
         </div>
         <figure class="bigshot">
-          <img class="shot-light" src="img/app-grid-light.jpg" width="1500" height="971" loading="lazy" alt="Hongguo Downloader &mdash; search bar and Trending wall of short-dramas and AI dramas with star ratings and episode counts (light theme)">
-          <img class="shot-dark" src="img/app-grid-dark.jpg" width="1500" height="971" loading="lazy" alt="Hongguo Downloader &mdash; search bar and Trending wall of short-dramas and AI dramas with star ratings and episode counts (dark theme)">
+          <img class="shot-light" src="img/v48/leaderboard.jpg" width="1600" height="1000" loading="lazy" alt="Hongguo Downloader v1.0.0.48 &mdash; the live 红果 leaderboard ranking short-dramas by category (All / Live-action / Animated / AI) with rank badges, scores and episode counts (light theme)">
+          <img class="shot-dark" src="img/v48/leaderboard.jpg" width="1600" height="1000" loading="lazy" alt="Hongguo Downloader v1.0.0.48 &mdash; the live 红果 leaderboard ranking short-dramas by category with rank badges, scores and episode counts (dark theme)">
         </figure>
         <ul class="pts">
-          <li>Search by title, or paste a <b>&#12298;&#21095;&#21517;&#12299; share link</b></li>
-          <li>Grab <b>AI-generated dramas (AI &#30701;&#21095;)</b> and classics alike</li>
-          <li><b>Trending</b> boards &mdash; Recommended, Hot &amp; New</li>
-          <li><b>New &mdash; Explore tab</b>: page through the full 3,300+ drama catalogue, not just Trending</li>
+          <li><b>Live &#32418;&#26524; leaderboard</b> &mdash; the platform&rsquo;s real-time top charts</li>
+          <li>Switch the board by category: <b>All &middot; Live-action &middot; Animated &middot; AI</b></li>
+          <li><b>Catalogue tab</b> &mdash; page through <b>24,000+ verified dramas</b></li>
+          <li>Genre tabs, in-app <b>search</b>, sort &amp; status filter</li>
+          <li>Or just paste a <b>&#12298;&#21095;&#21517;&#12299; share link</b> &mdash; it resolves instantly</li>
           <li>Tap posters to line up as many series as you like</li>
         </ul>
       </div>
@@ -532,8 +624,8 @@
           <p>Everything you download shows up as a poster shelf you can sort and browse. When a series you follow gets new episodes, the app spots them &mdash; and one tap on <b>Update all</b> now grabs every new &amp; missing episode, not just the cover, straight into the drama&rsquo;s existing folder.</p>
         </div>
         <figure class="bigshot">
-          <img class="shot-light" src="img/v31/app-library-light.jpg" width="2480" height="2760" loading="lazy" alt="Hongguo Downloader v1.0.0.31 Library &mdash; downloaded short-dramas with the new Update settings bar (quality, speed, series), star ratings and new-episode badges (light theme)">
-          <img class="shot-dark" src="img/v31/app-library-dark.jpg" width="2480" height="2760" loading="lazy" alt="Hongguo Downloader v1.0.0.31 Library with the new Update settings bar, star ratings and new-episode badges (dark theme)">
+          <img class="shot-light" src="img/v48/library.jpg" width="1600" height="1000" loading="lazy" alt="Hongguo Downloader v1.0.0.48 Library &mdash; a poster shelf of downloaded short-dramas with the Update settings bar (quality, speed, series), star ratings and new-episode badges (light theme)">
+          <img class="shot-dark" src="img/v48/library.jpg" width="1600" height="1000" loading="lazy" alt="Hongguo Downloader v1.0.0.48 Library &mdash; a poster shelf of downloaded short-dramas with the Update settings bar, star ratings and new-episode badges (dark theme)">
         </figure>
         <ul class="pts">
           <li>A poster-wall <b>Library</b> of everything you own</li>
@@ -583,28 +675,32 @@
 
     <div class="show" style="margin-top:52px">
       <div class="copy">
-        <span class="newpill">&#9733; Latest &mdash; v1.0.0.42</span>
-        <h3>Browse a full Catalog of 20,000+ dramas, right in the app.</h3>
-        <p>Released 1 September 2026. A new <b>Catalog</b> lets you browse <b>20,000+ verified dramas</b> with genre tabs, in-app search, sort and status filter &mdash; no link needed. Plus a redesigned interface, an instant Library with accurate on-disk progress, instant notices for shows taken offline, and faster, more reliable startup &amp; shutdown.</p>
+        <span class="newpill">&#9733; Latest &mdash; v1.0.0.48</span>
+        <h3>A live &#32418;&#26524; leaderboard, and a simpler two-tab home.</h3>
+        <p>The home screen is rebuilt around the <b>live &#32418;&#26524; leaderboard</b> &mdash; the platform&rsquo;s real-time rankings, switchable by <b>All / Live-action / Animated / AI</b> &mdash; sitting alongside a <b>Catalogue</b> of 24,000+ dramas. The old Recommended / Hot / New clutter is gone: one clean board, switched by category, wrapped in a quieter, faster, fully responsive interface that stretches to fit any window.</p>
       </div>
       <figure class="bigshot">
-        <img class="shot-light" src="img/v42/catalog.jpg" width="1600" height="1059" loading="lazy" alt="Hongguo Downloader v1.0.0.42 Catalog &mdash; browsing 20,000+ verified short-dramas with English genre tabs, in-app search, sort and status filter (light theme)">
-        <img class="shot-dark" src="img/v42/catalog.jpg" width="1600" height="1059" loading="lazy" alt="Hongguo Downloader v1.0.0.42 Catalog &mdash; browsing 20,000+ verified short-dramas with English genre tabs, in-app search, sort and status filter (dark theme)">
+        <img class="shot-light" src="img/v48/leaderboard.jpg" width="1600" height="1000" loading="lazy" alt="Hongguo Downloader v1.0.0.48 &mdash; the live 红果 leaderboard ranking short-dramas by category (All / Live-action / Animated / AI) with a two-tab Leaderboard and Catalogue home (light theme)">
+        <img class="shot-dark" src="img/v48/leaderboard.jpg" width="1600" height="1000" loading="lazy" alt="Hongguo Downloader v1.0.0.48 &mdash; the live 红果 leaderboard ranking short-dramas by category with a two-tab Leaderboard and Catalogue home (dark theme)">
       </figure>
       <ul class="pts">
-        <li><b>New Catalog</b> &mdash; 20,000+ verified dramas: genre tabs, search, sort &amp; status filter</li>
-        <li><b>Redesigned interface</b> &mdash; cleaner, fully responsive, simplified Library</li>
-        <li><b>Instant Library &amp; Live Disk Sync</b> &mdash; progress matches the files on disk</li>
-        <li><b>Offline shows flagged instantly</b> (&#24050;&#19979;&#26550;) &mdash; no more endless spinner</li>
-        <li><b>Faster &amp; more reliable</b> startup and shutdown</li>
+        <li><b>Live &#32418;&#26524; leaderboard</b> &mdash; the platform&rsquo;s real-time top charts, built in</li>
+        <li>One board, switched by category: <b>All &middot; Live-action &middot; Animated &middot; AI</b></li>
+        <li><b>Simpler two-tab home</b> &mdash; &#127942; Leaderboard &amp; &#127916; Catalogue, no more Recommended / Hot / New clutter</li>
+        <li><b>24,000+ drama Catalogue</b> with genre tabs, search, sort &amp; status filter</li>
+        <li><b>Fully responsive</b> &mdash; the whole app stretches to fit any window</li>
       </ul>
       <div class="cta" style="margin-top:36px">
-        <a class="btn primary lg" href="https://github.com/M4St3r0/hongguo-downloader/releases/latest/download/HongguoDownloader-Setup.exe">⬇ Update to v1.0.0.42</a>
-        <a class="btn ghost lg" href="https://github.com/M4St3r0/hongguo-downloader/releases/tag/1.0.0.42" target="_blank" rel="noopener">Full release notes <span class="ar">→</span></a>
+        <a class="btn primary lg" href="https://github.com/M4St3r0/hongguo-downloader/releases/latest/download/HongguoDownloader-Setup.exe">⬇ Get the latest version</a>
+        <a class="btn ghost lg" href="https://github.com/M4St3r0/hongguo-downloader/releases" target="_blank" rel="noopener">Full release notes <span class="ar">→</span></a>
       </div>
     </div>
 
     <div class="rel-history">
+      <div class="rel-row">
+        <span class="rel-v">v1.0.0.42</span>
+        <p>Added a full in-app Catalog of 20,000+ verified dramas (genre tabs, search, sort &amp; status filter), an instant Library with accurate on-disk progress, instant notices for shows taken offline, and faster, more reliable startup &amp; shutdown.</p>
+      </div>
       <div class="rel-row">
         <span class="rel-v">v1.0.0.35</span>
         <p>A rebuilt Explore tab for paging through the full catalogue, fixed search reliability, and download progress bars that track every episode again.</p>
@@ -858,6 +954,71 @@
   }
   set(localStorage.getItem('hg-site-theme')==='dark' ? 'dark' : 'light');   // light is the default
   if(btn) btn.onclick = function(){ set(root.getAttribute('data-theme')==='dark' ? 'light' : 'dark'); };
+})();
+</script>
+<!-- live browser + stats (Cloudflare Worker: hongguo-explorer) -->
+<script>
+(function(){
+  var API="https://hongguo-explorer.aly201514.workers.dev";
+  var $=function(s){return document.querySelector(s);};
+  function esc(t){return String(t==null?'':t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function fmt(n){ try{ return (n||0).toLocaleString(); }catch(e){ return ''+(n||0); } }
+  var mode="leaderboard", cat="all", genre="", q="", seq=0, genresLoaded=false;
+  function card(x, rank){
+    return '<div class="lb-card"><div class="lb-art">'
+      +(rank?'<span class="lb-rank'+(rank<=3?' top':'')+'">'+rank+'</span>':'')
+      +(x.score?'<span class="lb-score">★ '+esc(x.score)+'</span>':'')
+      +'<img src="'+esc(x.cover||'')+'" loading="lazy" alt="'+esc(x.title)+'" onerror="this.style.visibility=\'hidden\'">'
+      +'<span class="lb-eps">'+(x.episode_cnt||'?')+' eps</span></div>'
+      +'<div class="lb-ttl">'+esc(x.title)+'</div></div>';
+  }
+  function load(){
+    var my=++seq, grid=$('#lbGrid'); if(!grid) return;
+    grid.innerHTML='<div class="lb-empty">Loading…</div>';
+    var url = mode==='leaderboard'
+      ? API+'/leaderboard?board=hot&category='+encodeURIComponent(cat)+'&size=30'
+      : API+'/explorer?size=30&sort=popular'+(genre?'&genre='+encodeURIComponent(genre):'')+(q?'&q='+encodeURIComponent(q):'');
+    fetch(url).then(function(r){return r.json();}).then(function(d){
+      if(my!==seq) return;
+      var items=d.items||[];
+      if(!items.length){ grid.innerHTML='<div class="lb-empty">Nothing here right now.</div>'; $('#lbCount').textContent=''; return; }
+      grid.innerHTML=items.map(function(x,i){ return card(x, mode==='leaderboard'?i+1:0); }).join('');
+      $('#lbCount').textContent = mode==='leaderboard' ? ('Top '+items.length+' on 红果 right now') : (fmt(d.count||items.length)+' dramas'+(genre?(' · '+genre):'')+(q?(' · “'+q+'”'):''));
+    }).catch(function(){ if(my===seq){ grid.innerHTML='<div class="lb-empty">Couldn\'t reach the live feed — try again shortly.</div>'; } });
+  }
+  function ensureGenres(){
+    if(genresLoaded) return; genresLoaded=true;
+    fetch(API+'/genres?limit=18').then(function(r){return r.json();}).then(function(d){
+      var chips='<button class="lb-chip on" data-g="">All</button>'
+        +(d.genres||[]).map(function(g){ return '<button class="lb-chip" data-g="'+esc(g.value||g.genre)+'">'+esc(g.genre)+'</button>'; }).join('')
+        +'<input id="lbSearch" placeholder="Search 24,000+ dramas…" autocomplete="off" spellcheck="false">';
+      var box=$('#lbGenres'); box.innerHTML=chips;
+      box.querySelectorAll('.lb-chip').forEach(function(c){ c.onclick=function(){
+        genre=c.dataset.g||''; q=''; var si=$('#lbSearch'); if(si) si.value='';
+        box.querySelectorAll('.lb-chip').forEach(function(x){x.classList.toggle('on',x===c);}); load();
+      };});
+      var si=$('#lbSearch'), t; if(si){ si.oninput=function(){ clearTimeout(t); t=setTimeout(function(){ q=si.value.trim(); genre=''; box.querySelectorAll('.lb-chip').forEach(function(x){x.classList.remove('on');}); load(); },350); }; }
+    }).catch(function(){ genresLoaded=false; });
+  }
+  document.querySelectorAll('#lbTabs .lb-tab').forEach(function(t){ t.onclick=function(){
+    mode=t.dataset.mode;
+    document.querySelectorAll('#lbTabs .lb-tab').forEach(function(x){x.classList.toggle('on',x===t);});
+    $('#lbCats').hidden = mode!=='leaderboard';
+    $('#lbGenres').hidden = mode!=='catalog';
+    if(mode==='catalog') ensureGenres();
+    load();
+  };});
+  document.querySelectorAll('#lbCats .lb-chip').forEach(function(c){ c.onclick=function(){
+    cat=c.dataset.cat; document.querySelectorAll('#lbCats .lb-chip').forEach(function(x){x.classList.toggle('on',x===c);}); load();
+  };});
+  // live stats line in the hero
+  fetch(API+'/explorer?size=1').then(function(r){return r.json();}).then(function(d){
+    fetch(API+'/genres?limit=60').then(function(r){return r.json();}).then(function(g){
+      var ai=0,an=0; (g.genres||[]).forEach(function(x){ if(x.value==='AI')ai=x.count; if(x.value==='Animated')an=x.count; });
+      var el=$('#livestat'); if(el){ el.innerHTML='<b>'+fmt(d.count)+'</b> dramas · <b>'+fmt(ai)+'</b> AI · <b>'+fmt(an)+'</b> animated · live from 红果'; }
+    }).catch(function(){});
+  }).catch(function(){});
+  load();
 })();
 </script>
 </body>
