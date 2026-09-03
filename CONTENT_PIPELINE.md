@@ -108,30 +108,37 @@ other source of truth. That means:
   there is nothing to revert. Drift only happens when a release ships and the repo isn't updated to
   match — see above.
 
-## The 20,000+ drama catalog — what's confirmed, and how to talk about it
+## The 24,000+ drama catalog — what's confirmed, and how to talk about it
 
-As of **v1.0.0.42** (released 1 September 2026, already reflected in `site/index.html`'s `#whatsnew`
-section and every `softwareVersion` JSON-LD field), the app ships an in-app **Catalog** tab that lets
-users browse, search, sort, and filter **20,000+ verified dramas** directly — this is confirmed
-directly in the app UI (the Catalog tab's own count badge) and in the site's own changelog copy, so
-it's safe to state plainly in new content, not just implied.
+As of **v1.0.0.48** (already reflected in `site/index.html`'s `#whatsnew` section, `site/whatsnew/index.html`,
+and every `softwareVersion` JSON-LD field across the site), the app's **Catalogue** tab lets users
+browse, search, sort, and filter **24,000+ verified dramas** directly — this is confirmed directly
+in the app UI and in the site's own changelog copy, so it's safe to state plainly in new content,
+not just implied. (v1.0.0.48 also rebuilt the home screen around a **live 红果 leaderboard** — the
+platform's real-time top charts, switchable by **All / Live-action / Animated / AI** — sitting in a
+simpler two-tab **Leaderboard / Catalogue** home; the old Recommended / Hot / New toggle from
+v1.0.0.42 is gone.)
 
 **Use this fact going forward** — it's a genuine, newsworthy improvement worth promoting:
-- Lead with it in new guides/comparisons where it's relevant (e.g. "browse 20,000+ dramas without
-  leaving the app," "search Hongguo's catalogue of 20,000+ short-dramas and AI dramas").
+- Lead with it in new guides/comparisons where it's relevant (e.g. "browse 24,000+ dramas without
+  leaving the app," "search Hongguo's catalogue of 24,000+ short-dramas and AI dramas," or "check
+  the live 红果 leaderboard for what's trending right now").
 - Comparison posts can now cite it directly in the "at a glance" table or copy — it's a real
   differentiator against apps with in-app-only, non-downloadable libraries.
-- Keep it to **"20,000+"** — don't state a more precise number (it changes), and don't imply every
-  single one of those 20,000+ titles has been individually verified as still downloadable at watch
+- Keep it to **"24,000+"** — don't state a more precise number (it changes), and don't imply every
+  single one of those 24,000+ titles has been individually verified as still downloadable at watch
   time; titles do occasionally get pulled (see the in-app "Unavailable (已下架)" flagging).
+- If you're citing an older post's own text (e.g. quoting a v1.0.0.42-era changelog entry that
+  correctly said "20,000+" *at the time*), leave that historical figure alone — only use "24,000+"
+  in new content describing the *current* catalog.
 
 **Important — this is separate from `catalog/explorer.json.gz`.** That file is a much smaller,
 fixed **snapshot** (~2,244 oversea titles, captured 26 August 2026) used only so this pipeline can
 pick specific, real, individually-verifiable titles for drama-spotlight and genre-roundup posts —
-it is *not* a mirror of the app's live 20,000+-title catalog and hasn't been refreshed since. Keep
+it is *not* a mirror of the app's live 24,000+-title catalog and hasn't been refreshed since. Keep
 using it exactly as before for picking spotlight/roundup titles (everything in it is real and
 accurate for those specific dramas), but never describe it as "the catalog" or use its size as a
-stand-in for the 20,000+ figure — those are two different things. If this snapshot runs low on
+stand-in for the 24,000+ figure — those are two different things. If this snapshot runs low on
 unused titles, flag it to the human maintainer rather than trying to source a new one yourself.
 
 ## Real screenshots &amp; video in blog posts
@@ -148,36 +155,52 @@ they're about a specific drama, not the app UI, so don't force a screenshot into
   - `/img/v31/app-library-light.jpg` / `-dark.jpg` — Library poster wall
   - `/img/v31/app-account-light.jpg` / `-dark.jpg` — Account panel
   - `/img/v31/app-home-light.jpg` / `-dark.jpg` — home/Trending screen
-  - `/img/v35/app-explore-light.webp` / `-dark.webp` — Explore tab (browse the full catalogue)
+  - `/img/v35/app-explore-light.webp` / `-dark.webp` — Explore tab (browse the full catalogue) —
+    **superseded by `v42/catalog.jpg` and now `v48/catalog.jpg`; prefer those in new posts.**
   - `/img/app-dock-dark.jpg` / `-light.jpg` — download dock
-  - `/img/v42/catalog.jpg` — the new v1.0.0.42 **Catalog** tab: genre-tab chips (Time Travel, CEO,
-    Rebirth, Urban Romance, Historical, etc.), in-app search, sort and status filter, showing the
-    live 20,000+-drama count badge. One theme only (no `-light`/`-dark` pair) — use it as-is.
-  - `/img/v42/home.jpg` — the redesigned home/Trending screen (Recommended / Hot / New / Catalog
-    toggle above the poster grid). One theme only.
-  - `/img/v42/library.jpg` — the redesigned Library section: per-series Update/Play/Open controls,
-    "Update all," Set folder/Open folder/Scan, and the quality/speed/series-count controls. One
-    theme only.
   - `/img/v42/unavailable.jpg` — a queued title instantly flagged **"Unavailable (已下架)"** with
-    the in-app toast, illustrating the new instant offline-title detection. One theme only.
+    the in-app toast, illustrating the instant offline-title detection added in v1.0.0.42. Still
+    accurate as of v1.0.0.48 (this toast wasn't touched by the v48 home redesign). One theme only
+    (no `-light`/`-dark` pair) — use it as-is.
+  - `/img/v42/catalog.jpg`, `/img/v42/home.jpg`, `/img/v42/library.jpg` — **superseded, v1.0.0.42-era
+    screens.** `v42/home.jpg` showed the old Recommended / Hot / New / Catalog toggle, which
+    v1.0.0.48 replaced outright — don't use it in new posts, it no longer matches the app. Use the
+    `v48/` equivalents below instead. (`v42/catalog.jpg` and `v42/library.jpg` aren't *wrong*, just
+    stale — the `v48/` versions are the current screens and both show the live 24,000+ count.)
+  - `/img/v48/leaderboard.jpg` — the new home screen's **live 红果 leaderboard** tab: real-time top
+    charts, switchable by All / Live-action / Animated / AI, rank badges, scores, episode counts.
+    One theme only (single file already styled for both themes) — use it as-is. This is the current
+    "home/hero" screenshot; prefer it over `v31/app-home` or `v42/home.jpg` in new posts.
+  - `/img/v48/leaderboard-compact.jpg` — a tighter crop of the same leaderboard screen, useful where
+    a narrower aspect ratio fits better. One theme only.
+  - `/img/v48/catalog.jpg` — the current **Catalogue** tab: genre-tab chips, in-app search, sort and
+    status filter, showing the live **24,000+**-drama count badge. One theme only — the freshest and
+    most accurate catalog/browse screenshot; prefer it over `v42/catalog.jpg` and `v35/app-explore`
+    in new posts going forward.
+  - `/img/v48/library.jpg` — the current Library section: poster shelf, per-series Update/Play/Open
+    controls, the Update settings bar (quality, speed, series count), star ratings, new-episode
+    badges. One theme only — prefer it over `v42/library.jpg` and `v31/app-library` in new posts.
   - `/img/hongguo-demo.mp4` (poster `/img/hongguo-demo-frame.jpg`) — screen-recorded demo of
     search → queue → batch download in real time
 - **Pick the asset that matches the section it sits in** — a download/queue section gets
-  `app-queue`, a library/updating section gets `v42/library` (falls back to `v31/app-library` if
-  you want the theme-swap pair instead), a search/browse/catalog section gets `v42/catalog` (the
-  freshest and most accurate — prefer it over `v35/app-explore` in new posts going forward), and a
-  post specifically about titles disappearing from the platform gets `v42/unavailable`. Use the
-  theme-swap pattern already on the homepage where a pair exists: both a
-  `.shot-light`/`.shot-dark` pair, e.g.
+  `app-queue`, a library/updating section gets `v48/library` (falls back to `v31/app-library` if
+  you want the theme-swap pair instead), a search/browse/catalog section gets `v48/catalog` (the
+  freshest and most accurate — prefer it over `v42/catalog.jpg` and `v35/app-explore` in new posts),
+  a home/hero or trending-rankings section gets `v48/leaderboard` (or `v48/leaderboard-compact` for
+  a narrower crop), and a post specifically about titles disappearing from the platform gets
+  `v42/unavailable` (still current). Use the theme-swap pattern already on the homepage where a pair
+  exists: both a `.shot-light`/`.shot-dark` pair, e.g.
   `<img class="shot-light" src="/img/app-queue-light.jpg" ...><img class="shot-dark" src="/img/app-queue-dark.jpg" ...>`
   wrapped in a simple `<figure>` — see `site/index.html`'s `.bigshot` figures for the exact markup
   and matching CSS classes, or keep it simpler in blog posts with simply
   `<img src="/img/app-queue-light.jpg" alt="..." style="width:100%;border-radius:14px;border:1px solid var(--line)">`
   if you'd rather not theme-swap inline in an article body.
-  Match the CSS variables already loaded via `/blog/blog.css`. The four `v42/` assets have no
-  `-light`/`-dark` variant (single file, already dark-background) — just use one plain `<img>`, e.g.
-  `<img src="/img/v42/catalog.jpg" width="1600" height="1059" loading="lazy" alt="..." style="width:100%;border-radius:14px;border:1px solid var(--line)">`,
-  no `.shot-light`/`.shot-dark` wrapper needed.
+  Match the CSS variables already loaded via `/blog/blog.css`. The `v42/` and `v48/` assets have no
+  `-light`/`-dark` variant (single file, already styled for both themes) — just use one plain
+  `<img>`, e.g.
+  `<img src="/img/v48/catalog.jpg" width="1600" height="1000" loading="lazy" alt="..." style="width:100%;border-radius:14px;border:1px solid var(--line)">`
+  (note: `v48/` images are 1600×1000; `v42/` images are 1600×1059 — use the real dimensions for
+  whichever asset you pick), no `.shot-light`/`.shot-dark` wrapper needed.
 - **The demo video** belongs in getting-started / walkthrough-style posts (installing, first
   download, "how to use") — embed it the same way `site/index.html`'s `#how` section does:
   `<video controls playsinline preload="metadata" poster="/img/hongguo-demo-frame.jpg"><source src="/img/hongguo-demo.mp4" type="video/mp4"></video>`.
