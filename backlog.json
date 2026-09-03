@@ -1,22 +1,20 @@
 {
-  "updated": "2026-09-02",
+  "updated": "2026-09-03",
   "comparisons": {
     "done": ["DramaBox", "YOUKU", "ReelShort", "GoodShort", "NetShort", "ShortMax", "FlexTV", "MoboReels"],
     "remaining": []
   },
   "genre_roundups": {
-    "done": ["霸总/CEO romance", "穿越/time-travel", "重生/rebirth revenge"],
-    "remaining": ["甜宠/sweet romance", "悬疑/suspense", "古装/costume"]
+    "done": ["霸总/CEO romance", "穿越/time-travel", "重生/rebirth revenge", "甜宠/sweet romance"],
+    "remaining": ["悬疑/suspense", "古装/costume"]
   },
   "how_to": {
     "done": ["Fixing \"Windows protected your PC\" when installing Hongguo Downloader", "Updating Hongguo Downloader without losing your library", "Moving your downloaded dramas to a new PC, phone, or drive", "The 2-free-series-a-day limit, explained", "Display size settings for 4K / high-DPI screens", "What an empty search result means, and what to try next"],
     "remaining": []
   },
   "trust_faq": {
-    "done": ["Is 红果 (Hongguo) available outside China? What \"oversea\" means", "红果 vs 番茄小说 (fqnovel): what's the actual difference?"],
-    "remaining": [
-      "What happens to your downloads if a drama gets pulled from the app"
-    ]
+    "done": ["Is 红果 (Hongguo) available outside China? What \"oversea\" means", "红果 vs 番茄小说 (fqnovel): what's the actual difference?", "What happens to your downloads if a drama gets pulled from the app"],
+    "remaining": []
   },
   "creator": {
     "done": [],
@@ -33,7 +31,7 @@
   },
   "spotlights": {
     "source": "catalog/explorer.json.gz",
-    "used_oversea_ids": ["7528231557526457369", "7670401445845273624", "7665733500951088153", "7663434332274428952", "7593630870884322329", "7595598135934602264", "7663018402813856793", "7664137840741075992", "7472339648061131838", "7662693691819052056", "7664256882755767320", "7659018396205321240", "7665322205156215870", "7585509771524967448", "7600320452606577688", "7675264195742419993", "7665232529594534936", "7664927957269351448", "7595929276122156056", "7568783338983410750", "7598860593843424281", "7595888303010761753", "7593287100556905534", "7595094334442064920", "7600372251828948030", "7597469024020089880", "7598143933108997144", "7664995970773421081", "7528263779058977854", "7594421227343580222", "7601429069338512446", "7532324245410417689", "7598197536951634968", "7529739516064582681", "7595538092841258046", "7660776417084328984", "7664890834231249944", "7596968830073621528", "7527975861866204185", "7595173448029064217", "7528263776991202329", "7528619341193940030", "7527217505983548440"],
+    "used_oversea_ids": ["7528231557526457369", "7670401445845273624", "7665733500951088153", "7663434332274428952", "7593630870884322329", "7595598135934602264", "7663018402813856793", "7664137840741075992", "7472339648061131838", "7662693691819052056", "7664256882755767320", "7659018396205321240", "7665322205156215870", "7585509771524967448", "7600320452606577688", "7675264195742419993", "7665232529594534936", "7664927957269351448", "7595929276122156056", "7568783338983410750", "7598860593843424281", "7595888303010761753", "7593287100556905534", "7595094334442064920", "7600372251828948030", "7597469024020089880", "7598143933108997144", "7664995970773421081", "7528263779058977854", "7594421227343580222", "7601429069338512446", "7532324245410417689", "7598197536951634968", "7529739516064582681", "7595538092841258046", "7660776417084328984", "7664890834231249944", "7596968830073621528", "7527975861866204185", "7595173448029064217", "7528263776991202329", "7528619341193940030", "7527217505983548440", "7665312942316866622", "7665237166296927257", "7651545687925984281", "7529013629555837977", "7595880056870669374", "7535269638192499774", "7532374817954073625", "7516469910097103934", "7596980684686625817"],
     "selection_rule": "Parse catalog/explorer.json.gz (gzip'd JSON, {items:[{oversea_id,title,episode_cnt,score,remarks,avail}]}). Keep items where avail is truthy. Sort by episode_cnt descending. Skip any oversea_id already listed in used_oversea_ids. Take the next N needed for today's batch."
   }
 }

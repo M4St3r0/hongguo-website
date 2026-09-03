@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Happens to Your Downloads If a Drama Gets Pulled From the App — Hongguo Downloader</title>
+<meta name="description" content="If a 红果 (Hongguo) drama gets pulled from the platform, do your already-downloaded episodes still work? Yes — here's exactly what changes, what doesn't, and how the app's instant Unavailable flagging helps.">
+<meta name="keywords" content="drama pulled from hongguo, hongguo download still works after removed, 已下架, hongguo unavailable drama, download before removed, hongguo downloader library after removal">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="M4St3r0">
+<link rel="canonical" href="https://hongguodownloader.com/blog/what-happens-to-downloads-if-drama-pulled/">
+<meta name="theme-color" content="#140f0b">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Hongguo Downloader">
+<meta property="og:title" content="What happens to your downloads if a drama gets pulled from the app">
+<meta property="og:description" content="Your already-downloaded episodes are unaffected — here's exactly what changes, what doesn't, and how the app now flags pulled titles instantly.">
+<meta property="og:url" content="https://hongguodownloader.com/blog/what-happens-to-downloads-if-drama-pulled/">
+<meta property="og:image" content="https://hongguodownloader.com/img/app-hero.jpg">
+<meta property="article:published_time" content="2026-09-03">
+<meta property="article:modified_time" content="2026-09-03">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What happens to your downloads if a drama gets pulled">
+<meta name="twitter:description" content="Your already-downloaded episodes are unaffected — what actually changes when a title leaves 红果.">
+<meta name="twitter:image" content="https://hongguodownloader.com/img/app-hero.jpg">
+<link rel="icon" type="image/png" href="/img/logo.png">
+<link rel="stylesheet" href="/blog/blog.css">
+<script>try{if(localStorage.getItem('hg-site-theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "What happens to your downloads if a drama gets pulled from the app",
+  "description": "If a 红果 (Hongguo) drama gets pulled from the platform, your already-downloaded episodes are unaffected. What changes, what doesn't, and how v1.0.0.42's instant Unavailable flagging helps.",
+  "image": "https://hongguodownloader.com/img/app-hero.jpg",
+  "datePublished": "2026-09-03",
+  "dateModified": "2026-09-03",
+  "author": { "@type": "Person", "name": "M4St3r0", "url": "https://t.me/M4st3r0" },
+  "publisher": { "@type": "Organization", "name": "Hongguo Downloader", "logo": { "@type": "ImageObject", "url": "https://hongguodownloader.com/img/logo.png" } },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://hongguodownloader.com/blog/what-happens-to-downloads-if-drama-pulled/" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hongguodownloader.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Guides", "item": "https://hongguodownloader.com/blog/" },
+    { "@type": "ListItem", "position": 3, "name": "What happens to downloads if a drama is pulled" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Do my already-downloaded episodes stop working if a drama is removed from 红果?", "acceptedAnswer": { "@type": "Answer", "text": "No. Downloaded episodes are plain .mp4 files stored on your own PC — they don't check back with 红果 to keep playing, so removing the title from the platform has zero effect on files you already have." } },
+    { "@type": "Question", "name": "What if I was only partway through downloading a series when it got pulled?", "acceptedAnswer": { "@type": "Answer", "text": "You keep whatever episodes finished downloading before removal. Any episodes that hadn't downloaded yet can't be fetched anymore, since the source is gone — that's the one real gap, and it's why grabbing new episodes as they release beats waiting for a series to finish." } },
+    { "@type": "Question", "name": "How does the app know a title has been pulled?", "acceptedAnswer": { "@type": "Answer", "text": "As of v1.0.0.42, queuing a title that's no longer on the platform shows an instant \"Unavailable (已下架)\" toast the moment you try, rather than the download quietly failing or hanging." } },
+    { "@type": "Question", "name": "Can Hongguo Downloader restore a title after it's fully removed?", "acceptedAnswer": { "@type": "Answer", "text": "No — the app can only pull from what's currently on 红果. Once a title is completely gone from the source, there's nothing left to fetch, downloaded or not." } }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap"><div class="row">
+    <a class="brand" href="/">
+      <img class="mark" src="/img/logo.webp" alt="" width="34" height="34">
+      <span class="nm"><span class="cn">红果</span> Hongguo Downloader</span>
+    </a>
+    <div class="spacer"></div>
+    <nav class="links">
+      <a href="/#features">Features</a>
+      <a href="/#compare">Compare</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/blog/">Guides</a>
+    </nav>
+    <button class="themetoggle" id="themeBtn" type="button" title="Switch theme" aria-label="Switch light or dark theme">☾</button>
+    <a class="btn" href="https://github.com/M4St3r0/hongguo-downloader/releases/latest/download/HongguoDownloader-Setup.exe">Download</a>
+  </div></div>
+</header>
+
+<nav class="crumbs" aria-label="Breadcrumb">
+  <a href="/">Home</a><span class="sep">/</span><a href="/blog/">Guides</a><span class="sep">/</span>Downloads after a drama is pulled
+</nav>
+
+<article>
+  <div class="reading">
+    <span class="eyebrow">Trust &amp; FAQ</span>
+    <h1>What happens to your <span class="grad-text">downloads</span> if a drama gets pulled from the app</h1>
+    <div class="byline"><span>By <b>M4St3r0</b></span><span>·</span><span>Updated <b>3 September 2026</b></span><span>·</span><span>~5 min read</span></div>
+
+    <div class="tldr">
+      <div class="k">Short answer</div>
+      <p><strong>Nothing happens to episodes you've already downloaded.</strong> They're plain <strong>1080p .mp4</strong> files sitting on your own PC — the app doesn't phone home to 红果 to keep playing them, so a title being pulled from the platform has no effect on files you already have. The only real gap is episodes you <em>hadn't</em> downloaded yet when a series got pulled — those can't be fetched anymore, since the source is gone. Since <strong>v1.0.0.42</strong>, trying to queue a removed title now shows an instant <strong>"Unavailable (已下架)"</strong> toast, so you find out immediately instead of watching a download quietly fail.</p>
+    </div>
+
+    <p class="lede">This is one of the most common worries people bring to Hongguo Downloader before their first download: "if this drama disappears later, do I lose what I've saved?" It's a fair question — streaming apps train you to expect that anything you're watching can vanish without warning. The answer here is reassuring, but it comes with one honest caveat worth understanding up front.</p>
+
+    <h2 id="short-version">The short version: your downloads are already yours</h2>
+    <p>Once Hongguo Downloader finishes saving an episode, it's a normal <strong>.mp4</strong> file in a folder you chose, plus an entry in the app's <strong>Library</strong>. Nothing about that file depends on 红果 still hosting the drama — it's not a streaming license, a temporary cache, or a link that expires. It plays with any video player, it doesn't check for permission before playing, and moving it to another drive or PC works exactly like moving any other video file. If 红果 removes the title tomorrow, the file on your computer doesn't know or care.</p>
+
+    <h2 id="what-changes">What actually changes when a title is pulled</h2>
+    <p>Two things, and only two:</p>
+    <ul>
+      <li><b>You can no longer re-download it.</b> If you deleted the file, or never finished downloading the full series, the app can't fetch what's no longer on the platform. The source is gone, not just hidden.</li>
+      <li><b>"Update all" can't pull new episodes for an ongoing series.</b> If you were following a still-releasing show and it gets pulled mid-run, whatever episodes had already aired and downloaded are yours to keep — but any episodes that hadn't released yet, obviously, were never coming.</li>
+    </ul>
+    <p>Everything else — playback, your Library entry, the file's location on disk, moving it to a new PC — is completely unaffected. See <a href="/blog/move-downloaded-dramas-new-pc-phone-drive/">moving your downloaded dramas to a new PC, phone, or drive</a> if you want the details on that.</p>
+
+    <h2 id="mid-run">The one real risk — an ongoing series pulled mid-run</h2>
+    <p>The scenario worth actually planning around isn't a complete, already-finished series — those you either have in full or you don't. It's a series that's <strong>still releasing (连载中)</strong> when it gets pulled. In that case you keep everything that had aired and downloaded by that point, but the ending is simply never coming, because the platform itself no longer has it. This is uncommon, but it's the reason it's worth downloading episodes of an ongoing favorite as they release rather than waiting for the finale to grab everything at once — see the <strong>Update all</strong> tip in <a href="/blog/keep-hongguo-drama-after-it-disappears/">how to keep a 红果 drama after it disappears</a> for the habit that avoids this entirely.</p>
+
+    <h2 id="v42">How v1.0.0.42 changed this: instant Unavailable flagging</h2>
+    <p>Earlier versions of the app would just fail or hang if you tried to queue a title that 红果 no longer had. As of <strong>v1.0.0.42</strong>, the Library and queue now flag a removed title the moment you try to add it, with a direct <strong>"Unavailable (已下架)"</strong> toast — 已下架 literally means "taken off the shelf," the same term 红果 itself uses internally for delisted titles. You find out immediately, instead of wondering whether the download is just slow.</p>
+    <img src="/img/v42/unavailable.jpg" width="1600" height="1059" loading="lazy" alt="Hongguo Downloader showing an instant Unavailable (已下架) toast after a title was pulled from the platform" style="width:100%;border-radius:14px;border:1px solid var(--line)">
+    <p>This same flag also shows up for titles already sitting in your Library if you try to re-queue or update them after removal — so you always know exactly which of your saved titles are still fetchable from the source and which are frozen at whatever you already have.</p>
+
+    <h2 id="what-to-do">What to do if you think a title might get pulled soon</h2>
+    <p>There's no public warning before a removal — it's driven by licensing, not by anything visible in the app ahead of time. The practical habit that covers you either way: download a drama you actually care about <strong>while it's available</strong>, rather than leaving it in a watch-later list. Hongguo Downloader's free tier covers 2 whole series a day regardless of episode count, so there's little reason to put it off — see the <a href="/blog/2-free-series-a-day-limit-explained/">2-free-series-a-day limit, explained</a> if you're weighing how to spend your daily downloads.</p>
+
+    <div class="note"><b>Note:</b> Hongguo Downloader is an independent tool, not affiliated with 红果 / Hongguo. It only works with the 红果 oversea catalogue, and titles occasionally get renamed rather than truly removed — if a search comes up empty, check our <a href="/blog/hongguo-downloader-empty-search-results/">empty search results guide</a> before assuming a title is gone for good.</div>
+
+    <h2 id="faq">Frequently asked questions</h2>
+    <div class="faq">
+      <details open><summary>Do my already-downloaded episodes stop working if a drama is removed?</summary><p class="a">No. They're plain .mp4 files on your own PC that don't check back with 红果 to keep playing — removal from the platform has zero effect on files you already have.</p></details>
+      <details><summary>What if I was only partway through downloading when it got pulled?</summary><p class="a">You keep whatever finished downloading before removal. Episodes that hadn't downloaded yet can't be fetched anymore, since the source is gone.</p></details>
+      <details><summary>How does the app know a title has been pulled?</summary><p class="a">Since v1.0.0.42, queuing a removed title shows an instant "Unavailable (已下架)" toast right away, instead of the download quietly failing or hanging.</p></details>
+      <details><summary>Can the app restore a title after it's fully removed?</summary><p class="a">No — it can only pull from what's currently on 红果. Once a title is completely gone from the source, there's nothing left to fetch.</p></details>
+    </div>
+
+    <div class="cta-box">
+      <h3>Save your favourites while they're still up</h3>
+      <p>Download Hongguo Downloader and turn any 红果 drama into 1080p files you own — safe no matter what happens to it on the platform later.</p>
+      <div class="row">
+        <a class="btn lg" href="https://github.com/M4St3r0/hongguo-downloader/releases/latest/download/HongguoDownloader-Setup.exe">⬇ Download for Windows</a>
+        <a class="btn ghost lg" href="/blog/">More guides</a>
+      </div>
+      <div class="fine">Free to use · Windows 10 / 11 · ~88 MB · 2 free series a day</div>
+    </div>
+  </div>
+</article>
+
+<footer class="foot">
+  <div class="wrap"><div class="row">
+    <a class="brand" href="/">
+      <img class="mark" src="/img/logo.webp" alt="" width="34" height="34">
+      <span class="nm"><span class="cn">红果</span> Hongguo Downloader</span>
+    </a>
+    <div class="links">
+      <a href="/">Home</a>
+      <a href="/blog/">Guides</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="https://t.me/HongguoDownloaderBot">Get a key</a>
+    </div>
+    <div class="fine">
+      Made &amp; maintained by <a href="https://t.me/M4st3r0" rel="author">M4St3r0</a> · source &amp; releases on <a href="https://github.com/M4St3r0/hongguo-downloader">GitHub</a> · support on <a href="https://t.me/HongguoDownloaderBot">Telegram</a><br>
+      Independent project — not affiliated with 红果 / Hongguo. For personal use. Windows 10 &amp; 11. · Last updated 3 September 2026.
+    </div>
+  </div></div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement, btn=document.getElementById('themeBtn');
+  function set(t){
+    if(t==='dark'){ root.setAttribute('data-theme','dark'); } else { root.removeAttribute('data-theme'); }
+    try{ localStorage.setItem('hg-site-theme', t); }catch(e){}
+    if(btn) btn.textContent = (t==='dark') ? '☀' : '☾';
+  }
+  set(localStorage.getItem('hg-site-theme')==='dark' ? 'dark' : 'light');
+  if(btn) btn.onclick = function(){ set(root.getAttribute('data-theme')==='dark' ? 'light' : 'dark'); };
+})();
+</script>
+
+</body>
+</html>
