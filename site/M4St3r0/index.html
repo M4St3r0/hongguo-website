@@ -202,6 +202,7 @@
       <button class="tab-item" data-tab="keys">💎 License Keys (<span id="tabCountKeys">0</span>)</button>
       <button class="tab-item" data-tab="bot">📢 Bot Broadcast (<span id="tabCountBot">0</span>)</button>
       <button class="tab-item" data-tab="traffic">📊 Traffic</button>
+      <button class="tab-item" data-tab="revenue">💰 Revenue</button>
     </div>
 
     <!-- DEVICES -->
@@ -328,6 +329,41 @@
         <div class="traf-tbl"><h4>Top referrers</h4><div id="trafReferrers"></div></div>
         <div class="traf-tbl"><h4>Top countries</h4><div id="trafCountries"></div></div>
       </div>
+    </div>
+
+    <!-- REVENUE -->
+    <div id="viewRevenue" class="view-tab">
+      <style>
+        #viewRevenue .rev-tables{display:grid;grid-template-columns:1fr 1.5fr;gap:14px;margin-top:16px}
+        #viewRevenue .rev-card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+        #viewRevenue .rev-card h4{margin:0 0 8px;font-size:13px;color:var(--ink)}
+        #viewRevenue .rev-t{width:100%;border-collapse:collapse;font-size:12.5px;table-layout:fixed}
+        #viewRevenue .rev-t th{text-align:left;color:var(--muted);font-weight:600;font-size:11px;padding:4px 6px;border-bottom:1px solid var(--line)}
+        #viewRevenue .rev-t td{padding:6px;border-bottom:1px solid var(--line);color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+        #viewRevenue .rev-t td.num,#viewRevenue .rev-t th.num{text-align:right}
+        #viewRevenue .rev-t td.num{color:var(--muted)}
+        #viewRevenue .pill{font-size:10px;padding:2px 7px;border-radius:20px;font-weight:700;text-transform:capitalize}
+        #viewRevenue .pill.active{background:rgba(15,174,159,.16);color:var(--teal,#0fae9f)}
+        #viewRevenue .pill.canceled{background:rgba(255,148,38,.16);color:var(--accent2,#ff9426)}
+        #viewRevenue .pill.refunded{background:rgba(229,72,77,.16);color:#e5484d}
+        @media(max-width:720px){#viewRevenue .rev-tables{grid-template-columns:1fr}}
+      </style>
+      <div class="toolbar">
+        <button class="btn" id="revRefresh">↻ Refresh</button>
+        <span class="muted" style="align-self:center;font-size:12px">From Stripe purchases · shows initial sales (subscription renewals aren't counted separately)</span>
+      </div>
+      <div class="stats" style="margin-top:14px">
+        <div class="stat licensed"><div class="n" id="revNet">–</div><div class="l">Net revenue</div></div>
+        <div class="stat active24"><div class="n" id="revMonth">–</div><div class="l">This month</div></div>
+        <div class="stat installs"><div class="n" id="revSubs">–</div><div class="l">Active subscriptions</div></div>
+        <div class="stat keys"><div class="n" id="revSales">–</div><div class="l">Total sales</div></div>
+        <div class="stat"><div class="n" id="revDownloads" style="color:var(--teal)">–</div><div class="l">App downloads</div></div>
+      </div>
+      <div class="rev-tables">
+        <div class="rev-card"><h4>By plan</h4><div id="revByPlan"></div></div>
+        <div class="rev-card"><h4>Recent sales</h4><div id="revRecent"></div></div>
+      </div>
+      <div class="rev-card" style="margin-top:14px"><h4>Installer downloads by release</h4><div id="revReleases"></div></div>
     </div>
   </div>
 </div>
@@ -553,6 +589,7 @@ document.querySelectorAll('.tab-item').forEach(b=>b.addEventListener('click',()=
   const t=b.dataset.tab;
   $('#view'+t.charAt(0).toUpperCase()+t.slice(1)).classList.add('active');
   if(t==='traffic'&&!trafLoaded) loadTraffic(+$('#trafRange').value||7);
+  if(t==='revenue'&&!revLoaded) loadRevenue();
 }));
 
 /* ---------- traffic (Cloudflare Web Analytics — READ-ONLY) ---------- */
@@ -588,9 +625,44 @@ function renderTraffic(d){
 $('#trafRange').addEventListener('change',()=>loadTraffic(+$('#trafRange').value||7));
 $('#trafRefresh').addEventListener('click',()=>loadTraffic(+$('#trafRange').value||7));
 
+/* ---------- revenue + downloads (READ-ONLY, from stripe_payments + GitHub) ---------- */
+function money(c){return '$'+((c||0)/100).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});}
+const REV_PLAN={month:'Monthly',year:'Yearly',life:'Lifetime',life3:'Lifetime ×3'};
+let revLoaded=false;
+async function loadRevenue(){
+  ['revNet','revMonth','revSubs','revSales','revDownloads'].forEach(id=>$('#'+id).textContent='…');
+  let d=null,g=null;
+  try{ d=await rpc('admin_revenue',{p_pw:pw}); }catch(e){ if(e.auth){onAuthFail();return;} }
+  try{ g=await rpc('admin_release_stats',{p_pw:pw}); }catch(e){}
+  if(!d||!d.ok){
+    revLoaded=false;
+    ['revNet','revMonth','revSubs','revSales'].forEach(id=>$('#'+id).textContent='—');
+    $('#revByPlan').innerHTML=$('#revRecent').innerHTML='<div class="muted" style="padding:8px 2px">Unavailable.</div>';
+  } else { revLoaded=true; renderRevenue(d); }
+  renderReleases(g);
+}
+function renderRevenue(d){
+  $('#revNet').textContent=money(d.net_cents);
+  $('#revMonth').textContent=money(d.month_gross_cents);
+  $('#revSubs').textContent=d.active_subs||0;
+  $('#revSales').textContent=d.sales||0;
+  $('#revByPlan').innerHTML='<table class="rev-t"><tr><th>Plan</th><th class="num">Sales</th><th class="num">Active</th><th class="num">Gross</th></tr>'+
+    (d.by_plan||[]).map(r=>'<tr><td>'+esc(REV_PLAN[r.plan]||r.plan)+'</td><td class="num">'+r.n+'</td><td class="num">'+r.active+'</td><td class="num">'+money(r.gross_cents)+'</td></tr>').join('')+'</table>'+
+    (d.refunds?('<div class="muted" style="margin-top:8px;font-size:11.5px">'+d.refunds+' refunded · '+money(d.refunded_cents)+'</div>'):'');
+  $('#revRecent').innerHTML=(d.recent&&d.recent.length)?('<table class="rev-t"><tr><th>Date</th><th>Plan</th><th class="num">Amount</th><th>Status</th><th>Email</th></tr>'+
+    d.recent.map(r=>'<tr><td>'+fmtShort(r.created_at)+'</td><td>'+esc(REV_PLAN[r.plan]||r.plan)+'</td><td class="num">'+money(r.amount_cents)+'</td><td><span class="pill '+esc(r.status||'')+'">'+esc(r.status||'—')+'</span></td><td title="'+esc(r.email||'')+'">'+esc(r.email||'—')+'</td></tr>').join('')+'</table>'):'<div class="muted" style="padding:8px 2px">No sales yet.</div>';
+}
+function renderReleases(g){
+  if(!g||!g.ok){ $('#revDownloads').textContent='—'; $('#revReleases').innerHTML='<div class="muted" style="padding:8px 2px">Download stats unavailable.</div>'; return; }
+  $('#revDownloads').textContent=(g.total_downloads||0).toLocaleString();
+  $('#revReleases').innerHTML=(g.releases&&g.releases.length)?('<table class="rev-t"><tr><th>Release</th><th>Published</th><th class="num">Downloads</th></tr>'+
+    g.releases.slice(0,10).map(r=>'<tr><td>'+esc(r.tag||'—')+'</td><td>'+fmtShort(r.published_at)+'</td><td class="num">'+(r.downloads||0).toLocaleString()+'</td></tr>').join('')+'</table>'):'<div class="muted" style="padding:8px 2px">No releases.</div>';
+}
+$('#revRefresh').addEventListener('click',loadRevenue);
+
 /* ---------- load ---------- */
 async function loadAll(){
-  trafLoaded=false;   // traffic tab re-fetches lazily on next open
+  trafLoaded=false; revLoaded=false;   // traffic + revenue tabs re-fetch lazily on next open
   const summary=await rpc('admin_analytics_summary',{p_pw:pw}).catch(()=>null);
   keysList=await rpc('admin_list',{p_pw:pw});
   devicesList=await rpc('admin_device_list',{p_pw:pw}).catch(()=>[]);
