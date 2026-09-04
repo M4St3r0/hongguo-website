@@ -201,6 +201,7 @@
       <button class="tab-item active" data-tab="devices">🖥️ Installed Devices (<span id="tabCountDevices">0</span>)</button>
       <button class="tab-item" data-tab="keys">💎 License Keys (<span id="tabCountKeys">0</span>)</button>
       <button class="tab-item" data-tab="bot">📢 Bot Broadcast (<span id="tabCountBot">0</span>)</button>
+      <button class="tab-item" data-tab="traffic">📊 Traffic</button>
     </div>
 
     <!-- DEVICES -->
@@ -291,6 +292,42 @@
         <button class="btn" id="refreshBot">↻ Refresh</button>
       </div>
       <div id="tableBot"></div>
+    </div>
+
+    <!-- TRAFFIC -->
+    <div id="viewTraffic" class="view-tab">
+      <style>
+        #viewTraffic .tbars{display:flex;gap:4px;align-items:flex-end;height:130px;padding:12px 10px 8px;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow-x:auto}
+        #viewTraffic .tbar{display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:22px;justify-content:flex-end}
+        #viewTraffic .tbar-b{width:62%;min-width:8px;background:linear-gradient(180deg,var(--accent2,#ff9426),var(--teal,#0fae9f));border-radius:4px 4px 0 0}
+        #viewTraffic .tbar-l{font-size:9px;color:var(--muted);white-space:nowrap}
+        #viewTraffic .traf-tables{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+        #viewTraffic .traf-tbl{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+        #viewTraffic .traf-tbl h4{margin:0 0 8px;font-size:13px;color:var(--ink)}
+        #viewTraffic .traf-t{width:100%;border-collapse:collapse;font-size:12.5px;table-layout:fixed}
+        #viewTraffic .traf-t td{padding:5px 4px;border-bottom:1px solid var(--line);color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+        #viewTraffic .traf-t td.num{text-align:right;color:var(--muted);width:64px}
+        @media(max-width:720px){#viewTraffic .traf-tables{grid-template-columns:1fr}}
+      </style>
+      <div class="toolbar">
+        <select class="filter" id="trafRange">
+          <option value="1">Last 24 hours</option>
+          <option value="7" selected>Last 7 days</option>
+          <option value="30">Last 30 days</option>
+        </select>
+        <button class="btn" id="trafRefresh">↻ Refresh</button>
+        <span class="muted" style="align-self:center;font-size:12px">Privacy-first · Cloudflare Web Analytics · no cookies</span>
+      </div>
+      <div class="stats" style="margin-top:14px">
+        <div class="stat active24"><div class="n" id="trafViews">–</div><div class="l">Page views</div></div>
+        <div class="stat installs"><div class="n" id="trafVisits">–</div><div class="l">Visits</div></div>
+      </div>
+      <div id="trafChart" style="margin-top:16px"></div>
+      <div class="traf-tables">
+        <div class="traf-tbl"><h4>Top pages</h4><div id="trafPages"></div></div>
+        <div class="traf-tbl"><h4>Top referrers</h4><div id="trafReferrers"></div></div>
+        <div class="traf-tbl"><h4>Top countries</h4><div id="trafCountries"></div></div>
+      </div>
     </div>
   </div>
 </div>
@@ -515,10 +552,45 @@ document.querySelectorAll('.tab-item').forEach(b=>b.addEventListener('click',()=
   b.classList.add('active');
   const t=b.dataset.tab;
   $('#view'+t.charAt(0).toUpperCase()+t.slice(1)).classList.add('active');
+  if(t==='traffic'&&!trafLoaded) loadTraffic(+$('#trafRange').value||7);
 }));
+
+/* ---------- traffic (Cloudflare Web Analytics — READ-ONLY) ---------- */
+let trafLoaded=false;
+async function loadTraffic(days){
+  $('#trafViews').textContent='…'; $('#trafVisits').textContent='…';
+  $('#trafChart').innerHTML='<div class="muted" style="padding:16px">Loading…</div>';
+  let d=null;
+  try{ d=await rpc('admin_web_analytics',{p_pw:pw,p_days:days||7}); }
+  catch(e){ if(e.auth){ onAuthFail(); return; } }
+  if(!d||!d.ok){
+    trafLoaded=false;
+    $('#trafViews').textContent='—'; $('#trafVisits').textContent='—';
+    $('#trafChart').innerHTML='<div class="muted" style="padding:16px">'+(d&&d.reason==='not_configured'?'Analytics is not configured yet.':'Traffic data is unavailable right now — try Refresh in a moment.')+'</div>';
+    $('#trafPages').innerHTML=$('#trafReferrers').innerHTML=$('#trafCountries').innerHTML='';
+    return;
+  }
+  trafLoaded=true; renderTraffic(d);
+}
+function renderTraffic(d){
+  $('#trafViews').textContent=(d.pageviews||0).toLocaleString();
+  $('#trafVisits').textContent=(d.visits||0).toLocaleString();
+  const daily=d.daily||[], max=Math.max(1,...daily.map(x=>x.views||0));
+  $('#trafChart').innerHTML = daily.length ? '<div class="tbars">'+daily.map(x=>{
+    const h=Math.round(((x.views||0)/max)*96)+4, lbl=(x.date||'').slice(5);
+    return '<div class="tbar" title="'+esc(x.date)+': '+(x.views||0)+' views · '+(x.visits||0)+' visits"><div class="tbar-b" style="height:'+h+'px"></div><div class="tbar-l">'+esc(lbl)+'</div></div>';
+  }).join('')+'</div>' : '<div class="muted" style="padding:16px">No visits in this range yet.</div>';
+  const tbl=(rows,k)=>(rows&&rows.length)?('<table class="traf-t">'+rows.map(r=>'<tr><td title="'+esc(String(r[k]||''))+'">'+esc(String(r[k]||'—'))+'</td><td class="num">'+(r.views||0).toLocaleString()+'</td></tr>').join('')+'</table>'):'<div class="muted" style="padding:8px 2px">No data.</div>';
+  $('#trafPages').innerHTML=tbl(d.pages,'path');
+  $('#trafReferrers').innerHTML=tbl(d.referrers,'host');
+  $('#trafCountries').innerHTML=tbl(d.countries,'country');
+}
+$('#trafRange').addEventListener('change',()=>loadTraffic(+$('#trafRange').value||7));
+$('#trafRefresh').addEventListener('click',()=>loadTraffic(+$('#trafRange').value||7));
 
 /* ---------- load ---------- */
 async function loadAll(){
+  trafLoaded=false;   // traffic tab re-fetches lazily on next open
   const summary=await rpc('admin_analytics_summary',{p_pw:pw}).catch(()=>null);
   keysList=await rpc('admin_list',{p_pw:pw});
   devicesList=await rpc('admin_device_list',{p_pw:pw}).catch(()=>[]);
