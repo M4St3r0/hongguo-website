@@ -44,7 +44,7 @@
   <!-- Guides & Blog -->
   <url>
     <loc>https://hongguodownloader.com/blog/</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-09-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.85</priority>
   </url>
@@ -411,6 +411,36 @@
   <url>
     <loc>https://hongguodownloader.com/blog/female-sword-immortal-chased-me-to-earth/</loc>
     <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://hongguodownloader.com/blog/building-a-drama-recap-channel/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://hongguodownloader.com/blog/suspense-short-dramas-worth-downloading/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://hongguodownloader.com/blog/black-card-heiress-gang-darling/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://hongguodownloader.com/blog/xray-vision-business-empire/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://hongguodownloader.com/blog/lovestruck-family-princess-wakes-them-up-season-3/</loc>
+    <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
